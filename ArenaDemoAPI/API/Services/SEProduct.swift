@@ -54,7 +54,7 @@ open class SEProduct: SEBase {
         let apiLink = "/wp-json/wc/v2/products"
         animation?(true)
         _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
-
+            
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
                 handleFail()
                 return
@@ -67,13 +67,47 @@ open class SEProduct: SEBase {
             })
             animation?(false)
             completed(responseData)
-
+            
             
         }, failure: { error in
             handleFail()
             print("Call service \(#function)() failed!. \(error)")
         })
-        
+
+
+    }
+
+    // Get Product Review
+    open class func getReview(_ id: Int, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetReviewResponse?) -> Void)) {
+        func handleFail() {
+            animation?(false)
+            completed(nil)
+        }
+
+        let request = BaseRequest()
+        let info = getInfoRequest(request)
+
+        let apiLink = "/wp-json/wc/v2/products/\( id.toString() )/reviews"
+        animation?(true)
+        _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
+            
+            guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
+                handleFail()
+                return
+            }
+            let responseData = GetReviewResponse()
+            arrJsonObject?.forEach({ (jsonObject) in
+                if let obj = ReviewDTO.fromObject(jsonObject) {
+                    responseData.lstReview.append(obj)
+                }
+            })
+            animation?(false)
+            completed(responseData)
+            
+        }, failure: { error in
+            handleFail()
+            print("Call service \(#function)() failed!. \(error)")
+        })
 
     }
 }

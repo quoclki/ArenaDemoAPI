@@ -440,6 +440,7 @@ open class Links: JsonSerializable {
     
     open var _self : [LinkDTO] = []
     open var collection : [LinkDTO] = []
+    open var up: [LinkDTO] = []
 
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
@@ -447,6 +448,56 @@ open class Links: JsonSerializable {
             [
                 Type<Links>.arrayProperty("self", get: {return $0._self}, set: {$0._self = $1}),
                 Type<Links>.arrayProperty("collection", get: {return $0.collection}, set: {$0.collection = $1}),
+                Type<Links>.arrayProperty("up", get: {return $0.up}, set: {$0.up = $1}),
+            ]
+        )
+    }
+    
+}
+
+// Get Review Response
+open class GetReviewResponse: NSApiResponseBase {
+    public required init() {}
+    
+    open var lstReview: [ReviewDTO] = []
+    
+    open override class var typeName: String { return String(describing: self) }
+    open override class var metadata: Metadata {
+        return Metadata.create(super.metadata.properties, selfProperties:
+            [
+                Type<GetReviewResponse>.arrayProperty("lstReview", get: {return $0.lstReview}, set: {$0.lstReview = $1}),
+            ]
+        )
+    }
+}
+
+
+open class ReviewDTO: JsonSerializable {
+    public required init() {}
+    
+    open var id : Int?
+    open var date_created : String?
+    open var date_created_gmt : String?
+    open var review : String?
+    open var rating : Int?
+    open var name : String?
+    open var email : String?
+    open var verified : Bool?
+    open var _links : Links?
+
+    open class var typeName: String { return String(describing: self) }
+    open class var metadata: Metadata {
+        return Metadata.create(
+            [
+                Type<ReviewDTO>.optionalProperty("id", get: {return $0.id}, set: {$0.id = $1}),
+                Type<ReviewDTO>.optionalProperty("date_created", get: {return $0.date_created}, set: {$0.date_created = $1}),
+                Type<ReviewDTO>.optionalProperty("date_created_gmt", get: {return $0.date_created_gmt}, set: {$0.date_created_gmt = $1}),
+                Type<ReviewDTO>.optionalProperty("review", get: {return $0.review}, set: {$0.review = $1}),
+                Type<ReviewDTO>.optionalProperty("rating", get: {return $0.rating}, set: {$0.rating = $1}),
+                Type<ReviewDTO>.optionalProperty("name", get: {return $0.name}, set: {$0.name = $1}),
+                Type<ReviewDTO>.optionalProperty("email", get: {return $0.email}, set: {$0.email = $1}),
+                Type<ReviewDTO>.optionalProperty("verified", get: {return $0.verified}, set: {$0.verified = $1}),
+                Type<ReviewDTO>.optionalProperty("_links", get: {return $0._links}, set: {$0._links = $1}),
             ]
         )
     }
