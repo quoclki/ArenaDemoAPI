@@ -18,7 +18,7 @@ open class SEProduct: SEBase {
         
         let info = getInfoRequest(request)
         animation?(true)
-        let apiLink = "/wp-json/wc/v2/products/categories"
+        let apiLink = "wc/v2/products/categories"
         _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
@@ -51,7 +51,7 @@ open class SEProduct: SEBase {
         }
 
         let info = getInfoRequest(request)
-        let apiLink = "/wp-json/wc/v2/products"
+        let apiLink = "wc/v2/products"
         animation?(true)
         _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
             
@@ -87,7 +87,7 @@ open class SEProduct: SEBase {
         let request = BaseRequest()
         let info = getInfoRequest(request)
 
-        let apiLink = "/wp-json/wc/v2/products/\( id.toString() )/reviews"
+        let apiLink = "wc/v2/products/\( id.toString() )/reviews"
         animation?(true)
         _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
             

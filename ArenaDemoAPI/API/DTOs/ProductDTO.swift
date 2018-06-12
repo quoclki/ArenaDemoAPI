@@ -111,12 +111,20 @@ open class LinkDTO: JsonSerializable {
     public required init() {}
     
     open var href: String?
-    
+    open var name : String?
+    open var templated : Bool?
+    open var embeddable: Bool?
+    open var taxonomy: String?
+
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
         return Metadata.create(
             [
                 Type<LinkDTO>.optionalProperty("href", get: {return $0.href}, set: {$0.href = $1}),
+                Type<LinkDTO>.optionalProperty("name", get: {return $0.name}, set: {$0.name = $1}),
+                Type<LinkDTO>.optionalProperty("templated", get: {return $0.templated}, set: {$0.templated = $1}),
+                Type<LinkDTO>.optionalProperty("embeddable", get: {return $0.embeddable}, set: {$0.embeddable = $1}),
+                Type<LinkDTO>.optionalProperty("taxonomy", get: {return $0.taxonomy}, set: {$0.taxonomy = $1}),
             ]
         )
     }
@@ -440,20 +448,41 @@ open class Links: JsonSerializable {
     
     open var _self : [LinkDTO] = []
     open var collection : [LinkDTO] = []
+    open var about : [LinkDTO] = []
     open var up: [LinkDTO] = []
-
+    open var _open: [LinkDTO] = []
+    open var wp_post_type: [LinkDTO] = []
+    open var curies: [LinkDTO] = []
+    open var author: [LinkDTO] = []
+    open var replies: [LinkDTO] = []
+    open var version_history: [LinkDTO] = []
+    open var wp_featuredmedia: [LinkDTO] = []
+    open var wp_attachment: [LinkDTO] = []
+    open var wp_term: [LinkDTO] = []
+    
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
         return Metadata.create(
             [
                 Type<Links>.arrayProperty("self", get: {return $0._self}, set: {$0._self = $1}),
                 Type<Links>.arrayProperty("collection", get: {return $0.collection}, set: {$0.collection = $1}),
+                Type<Links>.arrayProperty("about", get: {return $0.about}, set: {$0.about = $1}),
                 Type<Links>.arrayProperty("up", get: {return $0.up}, set: {$0.up = $1}),
+                Type<Links>.arrayProperty("open", get: {return $0._open}, set: {$0._open = $1}),
+                Type<Links>.arrayProperty("wp:post_type", get: {return $0.wp_post_type}, set: {$0.wp_post_type = $1}),
+                Type<Links>.arrayProperty("curies", get: {return $0.curies}, set: {$0.curies = $1}),
+                Type<Links>.arrayProperty("author", get: {return $0.author}, set: {$0.author = $1}),
+                Type<Links>.arrayProperty("replies", get: {return $0.replies}, set: {$0.replies = $1}),
+                Type<Links>.arrayProperty("version-history", get: {return $0.version_history}, set: {$0.version_history = $1}),
+                Type<Links>.arrayProperty("wp:featuredmedia", get: {return $0.wp_featuredmedia}, set: {$0.wp_featuredmedia = $1}),
+                Type<Links>.arrayProperty("wp:attachment", get: {return $0.wp_attachment}, set: {$0.wp_attachment = $1}),
+                Type<Links>.arrayProperty("wp:term", get: {return $0.wp_term}, set: {$0.wp_term = $1}),
             ]
         )
     }
     
 }
+
 
 // Get Review Response
 open class GetReviewResponse: NSApiResponseBase {

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import ServiceStack
 
-public var APIURL: String = "http://www.arenaapp.vn/rnd" {
+public var APIURL: String = "http://www.arenaapp.vn/rnd/wp-json/" {
     didSet {
         if !APIURL.isEmpty {
             BaseService.client = JsonServiceClient(baseUrl: APIURL)
