@@ -19,6 +19,8 @@
 		0D4AA9B420CE8787006A0A2C /* ServiceStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4AA9B220CE8787006A0A2C /* ServiceStack.framework */; };
 		0DA9DDE420D017DD00194121 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9DDE320D017DD00194121 /* PostDTO.swift */; };
 		0DA9DDE620D017E600194121 /* SEPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9DDE520D017E600194121 /* SEPost.swift */; };
+		0DA9DDF420D2543D00194121 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9DDF320D2543D00194121 /* UserDTO.swift */; };
+		0DA9DDF620D2544B00194121 /* SEUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9DDF520D2544B00194121 /* SEUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		0D4AA9B220CE8787006A0A2C /* ServiceStack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ServiceStack.framework; sourceTree = "<group>"; };
 		0DA9DDE320D017DD00194121 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
 		0DA9DDE520D017E600194121 /* SEPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEPost.swift; sourceTree = "<group>"; };
+		0DA9DDF320D2543D00194121 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		0DA9DDF520D2544B00194121 /* SEUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 			children = (
 				0D4AA99420CE85B2006A0A2C /* ProductDTO.swift */,
 				0DA9DDE320D017DD00194121 /* PostDTO.swift */,
+				0DA9DDF320D2543D00194121 /* UserDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 				0D4AA99620CE85B2006A0A2C /* SEBase.swift */,
 				0D4AA99720CE85B2006A0A2C /* SEProduct.swift */,
 				0DA9DDE520D017E600194121 /* SEPost.swift */,
+				0DA9DDF520D2544B00194121 /* SEUser.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -206,10 +212,12 @@
 			files = (
 				0D4AA99F20CE85B2006A0A2C /* SEBase.swift in Sources */,
 				0D4AA9A320CE85B2006A0A2C /* NSApiRequest.swift in Sources */,
+				0DA9DDF620D2544B00194121 /* SEUser.swift in Sources */,
 				0DA9DDE420D017DD00194121 /* PostDTO.swift in Sources */,
 				0D4AA9A520CE85B2006A0A2C /* NSApiResponse.swift in Sources */,
 				0D4AA99E20CE85B2006A0A2C /* ProductDTO.swift in Sources */,
 				0DA9DDE620D017E600194121 /* SEPost.swift in Sources */,
+				0DA9DDF420D2543D00194121 /* UserDTO.swift in Sources */,
 				0D4AA9A420CE85B2006A0A2C /* BaseService.swift in Sources */,
 				0D4AA9A020CE85B2006A0A2C /* SEProduct.swift in Sources */,
 			);

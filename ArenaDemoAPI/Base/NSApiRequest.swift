@@ -23,6 +23,9 @@ open class BaseRequest: JsonSerializable {
     open var hide_empty: Bool?
     open var slug: String?
     
+    // use this variable for get only 1 object from 1 special link
+    open var special_link: String?
+    
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
         return Metadata.create(
