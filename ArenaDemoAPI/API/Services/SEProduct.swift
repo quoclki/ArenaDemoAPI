@@ -11,11 +11,9 @@ import Foundation
 open class SEProduct: SEBase {
     /// get List Customer get all
     open class func getListCategory(_ request: GetCategoryRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetCategoryResponse?) -> Void)) {
-        func handleFail() {
-            animation?(false)
-            completed(nil)
-        }
-        
+        let responseData = GetCategoryResponse()
+        responseData.success = false
+
         let info = getInfoRequest(request)
         animation?(true)
         let apiLink = "wc/v2/products/categories"
@@ -23,21 +21,21 @@ open class SEProduct: SEBase {
             animation?(false)
             
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
-                handleFail()
+                completed(responseData)
                 return
             }
             
-            let responseData = GetCategoryResponse()
             arrJsonObject?.forEach({ (jsonObject) in
                 if let obj = CategoryDTO.fromObject(jsonObject) {
                     responseData.lstCategory.append(obj)
                 }
             })
-            animation?(false)
+            responseData.success = true
             completed(responseData)
             
         }, failure: { error in
-            handleFail()
+            animation?(false)
+            completed(responseData)
             print("Call service \(#function)() failed!. \(error)")
         })
         
@@ -45,7 +43,8 @@ open class SEProduct: SEBase {
     
     // Get All Product
     open class func getListProduct(_ request: GetProductRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetProductResponse?) -> Void)) {
-        func handleFail() {
+        let responseData = GetProductResponse()
+       func handleFail() {
             animation?(false)
             completed(nil)
         }
@@ -54,18 +53,16 @@ open class SEProduct: SEBase {
         let apiLink = "wc/v2/products"
         animation?(true)
         _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
-            
+            animation?(false)
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
                 handleFail()
                 return
             }
-            let responseData = GetProductResponse()
             arrJsonObject?.forEach({ (jsonObject) in
                 if let obj = ProductDTO.fromObject(jsonObject) {
                     responseData.lstProduct.append(obj)
                 }
             })
-            animation?(false)
             completed(responseData)
             
             
@@ -79,7 +76,8 @@ open class SEProduct: SEBase {
 
     // Get Product Review
     open class func getReview(_ id: Int, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetReviewResponse?) -> Void)) {
-        func handleFail() {
+        let responseData = GetReviewResponse()
+       func handleFail() {
             animation?(false)
             completed(nil)
         }
@@ -90,18 +88,16 @@ open class SEProduct: SEBase {
         let apiLink = "wc/v2/products/\( id.toString() )/reviews"
         animation?(true)
         _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
-            
+            animation?(false)
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
                 handleFail()
                 return
             }
-            let responseData = GetReviewResponse()
             arrJsonObject?.forEach({ (jsonObject) in
                 if let obj = ReviewDTO.fromObject(jsonObject) {
                     responseData.lstReview.append(obj)
                 }
             })
-            animation?(false)
             completed(responseData)
             
         }, failure: { error in

@@ -12,15 +12,17 @@
 		0D4AA9A020CE85B2006A0A2C /* SEProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AA99720CE85B2006A0A2C /* SEProduct.swift */; };
 		0D4AA9A120CE85B2006A0A2C /* ArenaDemoAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D4AA99820CE85B2006A0A2C /* ArenaDemoAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D4AA9A220CE85B2006A0A2C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D4AA99920CE85B2006A0A2C /* Info.plist */; };
-		0D4AA9A320CE85B2006A0A2C /* NSApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AA99B20CE85B2006A0A2C /* NSApiRequest.swift */; };
+		0D4AA9A320CE85B2006A0A2C /* BaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AA99B20CE85B2006A0A2C /* BaseDTO.swift */; };
 		0D4AA9A420CE85B2006A0A2C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AA99C20CE85B2006A0A2C /* BaseService.swift */; };
-		0D4AA9A520CE85B2006A0A2C /* NSApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AA99D20CE85B2006A0A2C /* NSApiResponse.swift */; };
 		0D4AA9B320CE8787006A0A2C /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4AA9B120CE8787006A0A2C /* OAuthSwift.framework */; };
 		0D4AA9B420CE8787006A0A2C /* ServiceStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4AA9B220CE8787006A0A2C /* ServiceStack.framework */; };
 		0DA9DDE420D017DD00194121 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9DDE320D017DD00194121 /* PostDTO.swift */; };
 		0DA9DDE620D017E600194121 /* SEPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9DDE520D017E600194121 /* SEPost.swift */; };
 		0DA9DDF420D2543D00194121 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9DDF320D2543D00194121 /* UserDTO.swift */; };
 		0DA9DDF620D2544B00194121 /* SEUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9DDF520D2544B00194121 /* SEUser.swift */; };
+		0DF574B620D8D96A00D382DE /* ServiceEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF574B520D8D96A00D382DE /* ServiceEnum.swift */; };
+		0DF574B820D8DDEA00D382DE /* CustomerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF574B720D8DDEA00D382DE /* CustomerDTO.swift */; };
+		0DF574BA20D8E12300D382DE /* SECustomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF574B920D8E12300D382DE /* SECustomer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,15 +32,17 @@
 		0D4AA99720CE85B2006A0A2C /* SEProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEProduct.swift; sourceTree = "<group>"; };
 		0D4AA99820CE85B2006A0A2C /* ArenaDemoAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArenaDemoAPI.h; sourceTree = "<group>"; };
 		0D4AA99920CE85B2006A0A2C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0D4AA99B20CE85B2006A0A2C /* NSApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSApiRequest.swift; sourceTree = "<group>"; };
+		0D4AA99B20CE85B2006A0A2C /* BaseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDTO.swift; sourceTree = "<group>"; };
 		0D4AA99C20CE85B2006A0A2C /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
-		0D4AA99D20CE85B2006A0A2C /* NSApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSApiResponse.swift; sourceTree = "<group>"; };
 		0D4AA9B120CE8787006A0A2C /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OAuthSwift.framework; sourceTree = "<group>"; };
 		0D4AA9B220CE8787006A0A2C /* ServiceStack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ServiceStack.framework; sourceTree = "<group>"; };
 		0DA9DDE320D017DD00194121 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
 		0DA9DDE520D017E600194121 /* SEPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEPost.swift; sourceTree = "<group>"; };
 		0DA9DDF320D2543D00194121 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		0DA9DDF520D2544B00194121 /* SEUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEUser.swift; sourceTree = "<group>"; };
+		0DF574B520D8D96A00D382DE /* ServiceEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEnum.swift; sourceTree = "<group>"; };
+		0DF574B720D8DDEA00D382DE /* CustomerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDTO.swift; sourceTree = "<group>"; };
+		0DF574B920D8E12300D382DE /* SECustomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SECustomer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 		0D4AA99220CE85B2006A0A2C /* API */ = {
 			isa = PBXGroup;
 			children = (
+				0DF574B420D8D93200D382DE /* Enum */,
 				0D4AA99320CE85B2006A0A2C /* DTOs */,
 				0D4AA99520CE85B2006A0A2C /* Services */,
 			);
@@ -94,9 +99,11 @@
 		0D4AA99320CE85B2006A0A2C /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
+				0D4AA99B20CE85B2006A0A2C /* BaseDTO.swift */,
 				0D4AA99420CE85B2006A0A2C /* ProductDTO.swift */,
 				0DA9DDE320D017DD00194121 /* PostDTO.swift */,
 				0DA9DDF320D2543D00194121 /* UserDTO.swift */,
+				0DF574B720D8DDEA00D382DE /* CustomerDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -108,6 +115,7 @@
 				0D4AA99720CE85B2006A0A2C /* SEProduct.swift */,
 				0DA9DDE520D017E600194121 /* SEPost.swift */,
 				0DA9DDF520D2544B00194121 /* SEUser.swift */,
+				0DF574B920D8E12300D382DE /* SECustomer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -115,9 +123,7 @@
 		0D4AA99A20CE85B2006A0A2C /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				0D4AA99B20CE85B2006A0A2C /* NSApiRequest.swift */,
 				0D4AA99C20CE85B2006A0A2C /* BaseService.swift */,
-				0D4AA99D20CE85B2006A0A2C /* NSApiResponse.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -129,6 +135,14 @@
 				0D4AA9B220CE8787006A0A2C /* ServiceStack.framework */,
 			);
 			path = Framework;
+			sourceTree = "<group>";
+		};
+		0DF574B420D8D93200D382DE /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				0DF574B520D8D96A00D382DE /* ServiceEnum.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,13 +225,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D4AA99F20CE85B2006A0A2C /* SEBase.swift in Sources */,
-				0D4AA9A320CE85B2006A0A2C /* NSApiRequest.swift in Sources */,
+				0D4AA9A320CE85B2006A0A2C /* BaseDTO.swift in Sources */,
+				0DF574B620D8D96A00D382DE /* ServiceEnum.swift in Sources */,
+				0DF574BA20D8E12300D382DE /* SECustomer.swift in Sources */,
 				0DA9DDF620D2544B00194121 /* SEUser.swift in Sources */,
 				0DA9DDE420D017DD00194121 /* PostDTO.swift in Sources */,
-				0D4AA9A520CE85B2006A0A2C /* NSApiResponse.swift in Sources */,
 				0D4AA99E20CE85B2006A0A2C /* ProductDTO.swift in Sources */,
 				0DA9DDE620D017E600194121 /* SEPost.swift in Sources */,
 				0DA9DDF420D2543D00194121 /* UserDTO.swift in Sources */,
+				0DF574B820D8DDEA00D382DE /* CustomerDTO.swift in Sources */,
 				0D4AA9A420CE85B2006A0A2C /* BaseService.swift in Sources */,
 				0D4AA9A020CE85B2006A0A2C /* SEProduct.swift in Sources */,
 			);

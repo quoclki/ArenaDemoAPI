@@ -30,7 +30,7 @@ open class GetUserRequest: BaseRequest {
 }
 
 // Response
-open class GetUserResponse: NSApiResponseBase {
+open class GetUserResponse: BaseResponse {
     public required init() {}
     
     open var lstUser: [UserDTO] = []

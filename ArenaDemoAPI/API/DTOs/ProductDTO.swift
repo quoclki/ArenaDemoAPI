@@ -29,7 +29,7 @@ open class GetCategoryRequest: BaseRequest {
 }
 
 //Response
-open class GetCategoryResponse: NSApiResponseBase {    
+open class GetCategoryResponse: BaseResponse {
     public required init() {}
     
     open var lstCategory: [CategoryDTO] = []
@@ -185,7 +185,7 @@ open class GetProductRequest: BaseRequest {
 }
 
 //Response
-open class GetProductResponse: NSApiResponseBase {
+open class GetProductResponse: BaseResponse {
     public required init() {}
     
     open var lstProduct: [ProductDTO] = []
@@ -485,7 +485,7 @@ open class Links: JsonSerializable {
 
 
 // Get Review Response
-open class GetReviewResponse: NSApiResponseBase {
+open class GetReviewResponse: BaseResponse {
     public required init() {}
     
     open var lstReview: [ReviewDTO] = []

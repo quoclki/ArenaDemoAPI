@@ -11,6 +11,7 @@ import Foundation
 open class SEPost: SEBase {
     /// get List Customer get all
     open class func getListCategory(_ request: GetPostCategoryRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetPostCategoryResponse?) -> Void)) {
+        let responseData = GetPostCategoryResponse()
         func handleFail() {
             animation?(false)
             completed(nil)
@@ -27,7 +28,6 @@ open class SEPost: SEBase {
                 return
             }
             
-            let responseData = GetPostCategoryResponse()
             arrJsonObject?.forEach({ (jsonObject) in
                 if let obj = PostCategoryDTO.fromObject(jsonObject) {
                     responseData.lstPostCategory.append(obj)
@@ -44,6 +44,7 @@ open class SEPost: SEBase {
     }
   
     open class func getListPost(_ request: GetPostRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetPostResponse?) -> Void)) {
+        let responseData = GetPostResponse()
         func handleFail() {
             animation?(false)
             completed(nil)
@@ -60,7 +61,6 @@ open class SEPost: SEBase {
                 return
             }
             
-            let responseData = GetPostResponse()
             arrJsonObject?.forEach({ (jsonObject) in
                 if let obj = PostDTO.fromObject(jsonObject) {
                     responseData.lstPost.append(obj)

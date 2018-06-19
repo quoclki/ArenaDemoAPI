@@ -29,7 +29,7 @@ open class GetPostCategoryRequest: BaseRequest {
 }
 
 //Response
-open class GetPostCategoryResponse: NSApiResponseBase {
+open class GetPostCategoryResponse: BaseResponse {
     public required init() {}
     
     open var lstPostCategory: [PostCategoryDTO] = []
@@ -118,7 +118,7 @@ open class GetPostRequest: BaseRequest {
 
 
 // Response
-open class GetPostResponse: NSApiResponseBase {
+open class GetPostResponse: BaseResponse {
     public required init() {}
     
     open var lstPost: [PostDTO] = []

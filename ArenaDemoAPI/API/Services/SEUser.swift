@@ -11,6 +11,7 @@ import Foundation
 open class SEUser: SEBase {
     /// get List Customer get all
     open class func getListUser(_ request: GetUserRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetUserResponse?) -> Void)) {
+        let responseData = GetUserResponse()
         func handleFail() {
             animation?(false)
             completed(nil)
@@ -23,7 +24,6 @@ open class SEUser: SEBase {
         _ = info.oauthswift.client.get(apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
-            let responseData = GetUserResponse()
             if request.special_link != nil {
                 guard let jsonObject = try? response.jsonObject() else { return }
                 if let userDTO = UserDTO.fromObject(jsonObject) {
