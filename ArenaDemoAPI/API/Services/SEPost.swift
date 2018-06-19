@@ -10,12 +10,8 @@ import Foundation
 
 open class SEPost: SEBase {
     /// get List Customer get all
-    open class func getListCategory(_ request: GetPostCategoryRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetPostCategoryResponse?) -> Void)) {
+    open class func getListCategory(_ request: GetPostCategoryRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetPostCategoryResponse) -> Void)) {
         let responseData = GetPostCategoryResponse()
-        func handleFail() {
-            animation?(false)
-            completed(nil)
-        }
         
         let info = getInfoRequest(request)
         animation?(true)
@@ -24,7 +20,7 @@ open class SEPost: SEBase {
             animation?(false)
             
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
-                handleFail()
+                completed(responseData)
                 return
             }
             
@@ -33,22 +29,20 @@ open class SEPost: SEBase {
                     responseData.lstPostCategory.append(obj)
                 }
             })
-            animation?(false)
+            responseData.success = true
             completed(responseData)
             
         }, failure: { error in
-            handleFail()
+            responseData.updateError(error: error)
+            animation?(false)
+            completed(responseData)
             print("Call service \(#function)() failed!. \(error)")
         })
         
     }
   
-    open class func getListPost(_ request: GetPostRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetPostResponse?) -> Void)) {
+    open class func getListPost(_ request: GetPostRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetPostResponse) -> Void)) {
         let responseData = GetPostResponse()
-        func handleFail() {
-            animation?(false)
-            completed(nil)
-        }
         
         let info = getInfoRequest(request)
         animation?(true)
@@ -57,7 +51,7 @@ open class SEPost: SEBase {
             animation?(false)
             
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
-                handleFail()
+                completed(responseData)
                 return
             }
             
@@ -66,11 +60,13 @@ open class SEPost: SEBase {
                     responseData.lstPost.append(obj)
                 }
             })
-            animation?(false)
+            responseData.success = true
             completed(responseData)
             
         }, failure: { error in
-            handleFail()
+            responseData.updateError(error: error)
+            animation?(false)
+            completed(responseData)
             print("Call service \(#function)() failed!. \(error)")
         })
         

@@ -50,8 +50,14 @@ open class SEBase {
         )
         
         let parameters = genParameters(request)
-        
         return (oauthswift, parameters)
     }
-    
+}
+
+extension BaseResponse {
+    func updateError(error: Error) {
+//        guard let e = error as? OAuthSwiftError else { return }
+        self.errorCode = error.responseStatus.errorCode
+        self.message = error.responseStatus.message
+    }
 }

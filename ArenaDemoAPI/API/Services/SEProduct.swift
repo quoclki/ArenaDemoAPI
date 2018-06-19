@@ -10,9 +10,8 @@ import Foundation
 
 open class SEProduct: SEBase {
     /// get List Customer get all
-    open class func getListCategory(_ request: GetCategoryRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetCategoryResponse?) -> Void)) {
+    open class func getListCategory(_ request: GetCategoryRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetCategoryResponse) -> Void)) {
         let responseData = GetCategoryResponse()
-        responseData.success = false
 
         let info = getInfoRequest(request)
         animation?(true)
@@ -34,6 +33,7 @@ open class SEProduct: SEBase {
             completed(responseData)
             
         }, failure: { error in
+            responseData.updateError(error: error)
             animation?(false)
             completed(responseData)
             print("Call service \(#function)() failed!. \(error)")
@@ -42,12 +42,8 @@ open class SEProduct: SEBase {
     }
     
     // Get All Product
-    open class func getListProduct(_ request: GetProductRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetProductResponse?) -> Void)) {
+    open class func getListProduct(_ request: GetProductRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetProductResponse) -> Void)) {
         let responseData = GetProductResponse()
-       func handleFail() {
-            animation?(false)
-            completed(nil)
-        }
 
         let info = getInfoRequest(request)
         let apiLink = "wc/v2/products"
@@ -55,7 +51,7 @@ open class SEProduct: SEBase {
         _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
-                handleFail()
+                completed(responseData)
                 return
             }
             arrJsonObject?.forEach({ (jsonObject) in
@@ -63,25 +59,22 @@ open class SEProduct: SEBase {
                     responseData.lstProduct.append(obj)
                 }
             })
+            responseData.success = true
             completed(responseData)
             
-            
         }, failure: { error in
-            handleFail()
+            responseData.updateError(error: error)
+            animation?(false)
+            completed(responseData)
             print("Call service \(#function)() failed!. \(error)")
         })
-
 
     }
 
     // Get Product Review
-    open class func getReview(_ id: Int, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetReviewResponse?) -> Void)) {
+    open class func getReview(_ id: Int, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetReviewResponse) -> Void)) {
         let responseData = GetReviewResponse()
-       func handleFail() {
-            animation?(false)
-            completed(nil)
-        }
-
+        
         let request = BaseRequest()
         let info = getInfoRequest(request)
 
@@ -90,7 +83,7 @@ open class SEProduct: SEBase {
         _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
-                handleFail()
+                completed(responseData)
                 return
             }
             arrJsonObject?.forEach({ (jsonObject) in
@@ -98,10 +91,13 @@ open class SEProduct: SEBase {
                     responseData.lstReview.append(obj)
                 }
             })
+            responseData.success = true
             completed(responseData)
             
         }, failure: { error in
-            handleFail()
+            responseData.updateError(error: error)
+            animation?(false)
+            completed(responseData)
             print("Call service \(#function)() failed!. \(error)")
         })
 

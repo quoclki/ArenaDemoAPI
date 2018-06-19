@@ -10,29 +10,27 @@ import Foundation
 
 open class SEUser: SEBase {
     /// get List Customer get all
-    open class func getListUser(_ request: GetUserRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetUserResponse?) -> Void)) {
+    open class func getListUser(_ request: GetUserRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetUserResponse) -> Void)) {
         let responseData = GetUserResponse()
-        func handleFail() {
-            animation?(false)
-            completed(nil)
-        }
         
         let info = getInfoRequest(request)
-
         animation?(true)
         let apiLink = request.special_link ?? (APIURL + "wp/v2/posts")
         _ = info.oauthswift.client.get(apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
             if request.special_link != nil {
-                guard let jsonObject = try? response.jsonObject() else { return }
+                guard let jsonObject = try? response.jsonObject() else {
+                    completed(responseData)
+                    return
+                }
                 if let userDTO = UserDTO.fromObject(jsonObject) {
                     responseData.lstUser.append(userDTO)
                 }
                 
             } else {
                 guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
-                    handleFail()
+                    completed(responseData)
                     return
                 }
                 
@@ -44,11 +42,13 @@ open class SEUser: SEBase {
 
             }
             
-            animation?(false)
+            responseData.success = true
             completed(responseData)
             
         }, failure: { error in
-            handleFail()
+            responseData.updateError(error: error)
+            animation?(false)
+            completed(responseData)
             print("Call service \(#function)() failed!. \(error)")
         })
         

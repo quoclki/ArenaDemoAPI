@@ -7,24 +7,22 @@
 //
 
 import Foundation
+import OAuthSwift
 
 open class SECustomer: SEBase {
     /// get List Customer get all
-    open class func getList(_ request: GetCustomerRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetCustomerResponse?) -> Void)) {
+    open class func getList(_ request: GetCustomerRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetCustomerResponse) -> Void)) {
         let responseData = GetCustomerResponse()
-        func handleFail() {
-            animation?(false)
-            completed(nil)
-        }
         
         let info = getInfoRequest(request)
         animation?(true)
         let apiLink = "wc/v2/customers"
+        
         _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
-                handleFail()
+                completed(responseData)
                 return
             }
             
@@ -33,11 +31,13 @@ open class SECustomer: SEBase {
                     responseData.lstCustomer.append(obj)
                 }
             })
-            animation?(false)
+            responseData.success = true
             completed(responseData)
             
         }, failure: { error in
-            handleFail()
+            responseData.updateError(error: error)
+            animation?(false)
+            completed(responseData)
             print("Call service \(#function)() failed!. \(error)")
         })
         
