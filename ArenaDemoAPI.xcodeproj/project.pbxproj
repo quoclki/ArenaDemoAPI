@@ -103,10 +103,10 @@
 			isa = PBXGroup;
 			children = (
 				0D4AA99B20CE85B2006A0A2C /* BaseDTO.swift */,
-				0D4AA99420CE85B2006A0A2C /* ProductDTO.swift */,
-				0DA9DDE320D017DD00194121 /* PostDTO.swift */,
-				0DA9DDF320D2543D00194121 /* UserDTO.swift */,
 				0DF574B720D8DDEA00D382DE /* CustomerDTO.swift */,
+				0DA9DDE320D017DD00194121 /* PostDTO.swift */,
+				0D4AA99420CE85B2006A0A2C /* ProductDTO.swift */,
+				0DA9DDF320D2543D00194121 /* UserDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -115,10 +115,10 @@
 			isa = PBXGroup;
 			children = (
 				0D4AA99620CE85B2006A0A2C /* SEBase.swift */,
-				0D4AA99720CE85B2006A0A2C /* SEProduct.swift */,
-				0DA9DDE520D017E600194121 /* SEPost.swift */,
-				0DA9DDF520D2544B00194121 /* SEUser.swift */,
 				0DF574B920D8E12300D382DE /* SECustomer.swift */,
+				0DA9DDE520D017E600194121 /* SEPost.swift */,
+				0D4AA99720CE85B2006A0A2C /* SEProduct.swift */,
+				0DA9DDF520D2544B00194121 /* SEUser.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";

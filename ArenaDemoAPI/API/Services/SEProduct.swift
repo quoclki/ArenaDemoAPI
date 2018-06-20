@@ -7,16 +7,17 @@
 //
 
 import Foundation
+import OAuthSwift
 
 open class SEProduct: SEBase {
     /// get List Customer get all
-    open class func getListCategory(_ request: GetCategoryRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetCategoryResponse) -> Void)) {
+    open class func getListCategory(_ request: GetCategoryRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetCategoryResponse) -> Void)) -> OAuthSwiftRequestHandle? {
         let responseData = GetCategoryResponse()
 
         let info = getInfoRequest(request)
         animation?(true)
         let apiLink = "wc/v2/products/categories"
-        _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
+        return info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
@@ -42,13 +43,13 @@ open class SEProduct: SEBase {
     }
     
     // Get All Product
-    open class func getListProduct(_ request: GetProductRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetProductResponse) -> Void)) {
+    open class func getListProduct(_ request: GetProductRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetProductResponse) -> Void)) -> OAuthSwiftRequestHandle? {
         let responseData = GetProductResponse()
 
         let info = getInfoRequest(request)
         let apiLink = "wc/v2/products"
         animation?(true)
-        _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
+        return info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
                 completed(responseData)
@@ -72,7 +73,7 @@ open class SEProduct: SEBase {
     }
 
     // Get Product Review
-    open class func getReview(_ id: Int, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetReviewResponse) -> Void)) {
+    open class func getReview(_ id: Int, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetReviewResponse) -> Void)) -> OAuthSwiftRequestHandle? {
         let responseData = GetReviewResponse()
         
         let request = BaseRequest()
@@ -80,7 +81,7 @@ open class SEProduct: SEBase {
 
         let apiLink = "wc/v2/products/\( id.toString() )/reviews"
         animation?(true)
-        _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
+        return info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
                 completed(responseData)

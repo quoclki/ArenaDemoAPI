@@ -7,16 +7,17 @@
 //
 
 import Foundation
+import OAuthSwift
 
 open class SEPost: SEBase {
     /// get List Customer get all
-    open class func getListCategory(_ request: GetPostCategoryRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetPostCategoryResponse) -> Void)) {
+    open class func getListCategory(_ request: GetPostCategoryRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetPostCategoryResponse) -> Void)) -> OAuthSwiftRequestHandle? {
         let responseData = GetPostCategoryResponse()
         
         let info = getInfoRequest(request)
         animation?(true)
         let apiLink = "wp/v2/categories"
-        _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
+        return info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
@@ -41,13 +42,13 @@ open class SEPost: SEBase {
         
     }
   
-    open class func getListPost(_ request: GetPostRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetPostResponse) -> Void)) {
+    open class func getListPost(_ request: GetPostRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetPostResponse) -> Void)) -> OAuthSwiftRequestHandle? {
         let responseData = GetPostResponse()
         
         let info = getInfoRequest(request)
         animation?(true)
         let apiLink = "wp/v2/posts"
-        _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
+        return info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {

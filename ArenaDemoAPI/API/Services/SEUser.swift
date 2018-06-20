@@ -7,16 +7,17 @@
 //
 
 import Foundation
+import OAuthSwift
 
 open class SEUser: SEBase {
     /// get List Customer get all
-    open class func getListUser(_ request: GetUserRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetUserResponse) -> Void)) {
+    open class func getListUser(_ request: GetUserRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetUserResponse) -> Void)) -> OAuthSwiftRequestHandle? {
         let responseData = GetUserResponse()
         
         let info = getInfoRequest(request)
         animation?(true)
         let apiLink = request.special_link ?? (APIURL + "wp/v2/posts")
-        _ = info.oauthswift.client.get(apiLink, parameters: info.parameters, success: { response in
+        return info.oauthswift.client.get(apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
             if request.special_link != nil {

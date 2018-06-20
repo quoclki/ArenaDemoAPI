@@ -11,14 +11,14 @@ import OAuthSwift
 
 open class SECustomer: SEBase {
     /// get List Customer get all
-    open class func getList(_ request: GetCustomerRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetCustomerResponse) -> Void)) {
+    open class func getList(_ request: GetCustomerRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetCustomerResponse) -> Void)) -> OAuthSwiftRequestHandle? {
         let responseData = GetCustomerResponse()
         
         let info = getInfoRequest(request)
         animation?(true)
         let apiLink = "wc/v2/customers"
         
-        _ = info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
+        return info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
