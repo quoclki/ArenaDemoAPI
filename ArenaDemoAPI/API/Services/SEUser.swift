@@ -30,7 +30,7 @@ open class SEUser: SEBase {
                 }
                 
             } else {
-                guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
+                guard let arrJsonObject = try? response.jsonObject() as? Array<Any>, arrJsonObject != nil else {
                     completed(responseData)
                     return
                 }

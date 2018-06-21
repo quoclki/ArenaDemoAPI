@@ -21,13 +21,16 @@ open class SECustomer: SEBase {
         return info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
-            guard let jsonObject = try? response.jsonObject() else {
+            guard let arrJsonObject = try? response.jsonObject() as? Array<Any>, arrJsonObject != nil else {
                 completed(responseData)
                 return
             }
-            if let userDTO = CustomerDTO.fromObject(jsonObject) {
-                responseData.lstCustomer.append(userDTO)
-            }
+            
+            arrJsonObject?.forEach({ (jsonObject) in
+                if let obj = CustomerDTO.fromObject(jsonObject) {
+                    responseData.lstCustomer.append(obj)
+                }
+            })
 
             responseData.success = true
             completed(responseData)
@@ -57,7 +60,7 @@ open class SECustomer: SEBase {
         return info.oauthswift.client.post(APIURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
-            guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
+            guard let arrJsonObject = try? response.jsonObject() as? Array<Any>, arrJsonObject != nil else {
                 completed(responseData)
                 return
             }
@@ -77,13 +80,6 @@ open class SECustomer: SEBase {
             print("Call service \(#function)() failed!. \(error)")
         })
 
-        
-        
-        
     }
-    
-    
-    
-    
     
 }

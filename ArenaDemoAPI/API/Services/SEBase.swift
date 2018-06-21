@@ -64,11 +64,11 @@ extension BaseResponse {
             return
         }
         
-        guard let responseBodyString = e.userInfo["Response-Body"] as? String, !responseBodyString.isEmpty else {
+        guard let responseBody = e.userInfo["Response-Body"] else {
             return
         }
         
-        guard let responseDTO = BaseResponse.fromJson(responseBodyString) else {
+        guard let responseDTO = BaseResponse.fromObject(responseBody) else {
             return
         }
         
