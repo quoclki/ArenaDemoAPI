@@ -59,13 +59,14 @@ open class CustomerDTO: JsonSerializable {
     open var last_name : String?
     open var role : String?
     open var username : String?
+    open var password : String?
     open var billing : AddressDTO?
     open var shipping : AddressDTO?
     open var is_paying_customer : Bool?
     open var orders_count : Int?
     open var total_spent : Double?
     open var avatar_url : String?
-    open var meta_data : [String] = []
+    open var meta_data : [MetaDataDTO] = []
     open var _links : LinkDTO?
     
     open class var typeName: String { return String(describing: self) }
@@ -82,6 +83,7 @@ open class CustomerDTO: JsonSerializable {
                 Type<CustomerDTO>.optionalProperty("last_name", get: {return $0.last_name}, set: {$0.last_name = $1}),
                 Type<CustomerDTO>.optionalProperty("role", get: {return $0.role}, set: {$0.role = $1}),
                 Type<CustomerDTO>.optionalProperty("username", get: {return $0.username}, set: {$0.username = $1}),
+                Type<CustomerDTO>.optionalProperty("password", get: {return $0.password}, set: {$0.password = $1}),
                 Type<CustomerDTO>.optionalProperty("billing", get: {return $0.billing}, set: {$0.billing = $1}),
                 Type<CustomerDTO>.optionalProperty("shipping", get: {return $0.shipping}, set: {$0.shipping = $1}),
                 Type<CustomerDTO>.optionalProperty("is_paying_customer", get: {return $0.is_paying_customer}, set: {$0.is_paying_customer = $1}),
@@ -94,6 +96,26 @@ open class CustomerDTO: JsonSerializable {
         )
     }
 }
+
+open class MetaDataDTO: JsonSerializable {
+    public required init() {}
+    
+    open var id : String?
+    open var key : String?
+    open var value : String?
+    
+    open class var typeName: String { return String(describing: self) }
+    open class var metadata: Metadata {
+        return Metadata.create(
+            [
+                Type<MetaDataDTO>.optionalProperty("id", get: {return $0.id}, set: {$0.id = $1}),
+                Type<MetaDataDTO>.optionalProperty("key", get: {return $0.key}, set: {$0.key = $1}),
+                Type<MetaDataDTO>.optionalProperty("value", get: {return $0.value}, set: {$0.value = $1}),
+            ]
+        )
+    }
+}
+
 
 open class AddressDTO: JsonSerializable {
     public required init() {}

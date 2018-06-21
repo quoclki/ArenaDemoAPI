@@ -49,7 +49,7 @@ open class BaseResponse: JsonSerializable, HasMetadata {
     public required init() {}
     
     open var success: Bool = false
-    open var errorCode: String?
+    open var code: String?
     open var message: String?
     
     open class var typeName: String { return String(describing: self) }
@@ -57,7 +57,7 @@ open class BaseResponse: JsonSerializable, HasMetadata {
         return Metadata.create(
             [
                 Type<BaseResponse>.property("success", get: {return $0.success}, set: {$0.success = $1}),
-                Type<BaseResponse>.optionalProperty("errorCode", get: {return $0.errorCode}, set: {$0.errorCode = $1}),
+                Type<BaseResponse>.optionalProperty("code", get: {return $0.code}, set: {$0.code = $1}),
                 Type<BaseResponse>.optionalProperty("message", get: {return $0.message}, set: {$0.message = $1}),
             ]
         )

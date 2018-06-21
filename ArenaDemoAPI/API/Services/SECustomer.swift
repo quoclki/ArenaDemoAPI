@@ -21,6 +21,42 @@ open class SECustomer: SEBase {
         return info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
+            guard let jsonObject = try? response.jsonObject() else {
+                completed(responseData)
+                return
+            }
+            if let userDTO = CustomerDTO.fromObject(jsonObject) {
+                responseData.lstCustomer.append(userDTO)
+            }
+
+            responseData.success = true
+            completed(responseData)
+            
+        }, failure: { error in
+            responseData.updateError(error: error)
+            animation?(false)
+            completed(responseData)
+            print("Call service \(#function)() failed!. \(error)")
+        })
+        
+    }
+    
+    open class func createOrUpdate(_ request: CustomerDTO, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetCustomerResponse) -> Void)) -> OAuthSwiftRequestHandle? {
+        let responseData = GetCustomerResponse()
+
+        let info = getInfoRequest(request)
+        animation?(true)
+        var apiLink = "wc/v2/customers"
+        
+        // for update
+        if let id = request.id {
+            apiLink += "/\( id )"
+            request.id = nil
+        }
+        
+        return info.oauthswift.client.post(APIURL + apiLink, parameters: info.parameters, success: { response in
+            animation?(false)
+            
             guard let arrJsonObject = try? response.jsonObject() as? Array<AnyObject>, arrJsonObject != nil else {
                 completed(responseData)
                 return
@@ -40,6 +76,14 @@ open class SECustomer: SEBase {
             completed(responseData)
             print("Call service \(#function)() failed!. \(error)")
         })
+
+        
+        
         
     }
+    
+    
+    
+    
+    
 }

@@ -268,7 +268,7 @@ open class ProductDTO: JsonSerializable {
     open var variations : [String] = []
     open var grouped_products : [String] = []
     open var menu_order : Int?
-    open var meta_data : [String] = []
+    open var meta_data : [MetaDataDTO] = []
     open var _links : Links?
     
     open class var typeName: String { return String(describing: self) }

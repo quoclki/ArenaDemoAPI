@@ -8,13 +8,14 @@
 
 import Foundation
 import OAuthSwift
+import ServiceStack
 
 open class SEBase {
     static var oauth_consumer_key = "ck_f20eabddec7d39e39cdab8a898cc3b66e058db8d"
     static var oauth_consumer_secret = "cs_0a9f62b1c01fb70978b8456b3e3ac5fc4760c83d"
 
     // Get parameter not null
-    class func genParameters<T: BaseRequest>(_ request: T) -> [String: Any] {
+    class func genParameters<T: JsonSerializable>(_ request: T) -> [String: Any] {
         do {
             if let data = request.toJson().data(using: String.Encoding.utf8), let dict = try JSONSerialization.jsonObject(with: data) as? [String: Any?] {
                 var para: [String: Any] = [:]
@@ -43,7 +44,7 @@ open class SEBase {
     }
     
     // Get request with OAuth1Swift and parameters
-    class func getInfoRequest<T: BaseRequest>(_ request: T) -> (oauthswift: OAuth1Swift, parameters: [String: Any]) {
+    class func getInfoRequest<T: JsonSerializable>(_ request: T) -> (oauthswift: OAuth1Swift, parameters: [String: Any]) {
         let oauthswift = OAuth1Swift(
             consumerKey:        oauth_consumer_key ,
             consumerSecret:     oauth_consumer_secret
@@ -56,8 +57,22 @@ open class SEBase {
 
 extension BaseResponse {
     func updateError(error: Error) {
-//        guard let e = error as? OAuthSwiftError else { return }
-        self.errorCode = error.responseStatus.errorCode
-        self.message = error.responseStatus.message
+        guard let e = (error as NSError).userInfo["error"] as? NSError else { return }
+        if let msg = e.userInfo[NSLocalizedDescriptionKey] as? String, !msg.isEmpty {
+            self.code = e.responseStatus.errorCode
+            self.message = msg
+            return
+        }
+        
+        guard let responseBodyString = e.userInfo["Response-Body"] as? String, !responseBodyString.isEmpty else {
+            return
+        }
+        
+        guard let responseDTO = BaseResponse.fromJson(responseBodyString) else {
+            return
+        }
+        
+        self.code = responseDTO.code
+        self.message = responseDTO.message
     }
 }
