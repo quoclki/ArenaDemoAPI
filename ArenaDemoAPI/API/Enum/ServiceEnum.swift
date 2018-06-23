@@ -83,6 +83,34 @@ public enum ECustomerRole: String {
     case subscriber = "subscriber"
     case customer = "customer"
     case shop_manager = "shop_manager"
+    
+    public var name: String {
+        switch self {
+        case .administrator:
+            return "Administrator"
+            
+        case .editor:
+            return "Editor"
+            
+        case .author:
+            return "Author"
+            
+        case .contributor:
+            return "Contributor"
+            
+        case .subscriber:
+            return "Subcriber"
+            
+        case .customer:
+            return "Customer"
+            
+        case .shop_manager:
+            return "SHop Manager"
+            
+        default:
+            return ""
+        }
+    }
 }
 
 

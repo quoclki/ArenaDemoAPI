@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0C1A1E20DC979000294A70 /* OrderDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0C1A1D20DC979000294A70 /* OrderDetailDTO.swift */; };
+		0D0C1A2020DC979A00294A70 /* SEOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0C1A1F20DC979A00294A70 /* SEOrder.swift */; };
 		0D4AA99E20CE85B2006A0A2C /* ProductDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AA99420CE85B2006A0A2C /* ProductDTO.swift */; };
 		0D4AA99F20CE85B2006A0A2C /* SEBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AA99620CE85B2006A0A2C /* SEBase.swift */; };
 		0D4AA9A020CE85B2006A0A2C /* SEProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AA99720CE85B2006A0A2C /* SEProduct.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D0C1A1D20DC979000294A70 /* OrderDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailDTO.swift; sourceTree = "<group>"; };
+		0D0C1A1F20DC979A00294A70 /* SEOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEOrder.swift; sourceTree = "<group>"; };
 		0D2C57C520CA230C00F78A5B /* ArenaDemoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ArenaDemoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D4AA99420CE85B2006A0A2C /* ProductDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDTO.swift; sourceTree = "<group>"; };
 		0D4AA99620CE85B2006A0A2C /* SEBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEBase.swift; sourceTree = "<group>"; };
@@ -92,8 +96,8 @@
 		0D4AA99220CE85B2006A0A2C /* API */ = {
 			isa = PBXGroup;
 			children = (
-				0DF574B420D8D93200D382DE /* Enum */,
 				0D4AA99320CE85B2006A0A2C /* DTOs */,
+				0DF574B420D8D93200D382DE /* Enum */,
 				0D4AA99520CE85B2006A0A2C /* Services */,
 			);
 			path = API;
@@ -107,6 +111,7 @@
 				0DA9DDE320D017DD00194121 /* PostDTO.swift */,
 				0D4AA99420CE85B2006A0A2C /* ProductDTO.swift */,
 				0DA9DDF320D2543D00194121 /* UserDTO.swift */,
+				0D0C1A1D20DC979000294A70 /* OrderDetailDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 				0DA9DDE520D017E600194121 /* SEPost.swift */,
 				0D4AA99720CE85B2006A0A2C /* SEProduct.swift */,
 				0DA9DDF520D2544B00194121 /* SEUser.swift */,
+				0D0C1A1F20DC979A00294A70 /* SEOrder.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -230,6 +236,7 @@
 			files = (
 				0D4AA99F20CE85B2006A0A2C /* SEBase.swift in Sources */,
 				0D4AA9A320CE85B2006A0A2C /* BaseDTO.swift in Sources */,
+				0D0C1A2020DC979A00294A70 /* SEOrder.swift in Sources */,
 				0DF574B620D8D96A00D382DE /* ServiceEnum.swift in Sources */,
 				0DF574BA20D8E12300D382DE /* SECustomer.swift in Sources */,
 				0DA9DDF620D2544B00194121 /* SEUser.swift in Sources */,
@@ -237,6 +244,7 @@
 				0D4AA99E20CE85B2006A0A2C /* ProductDTO.swift in Sources */,
 				0DA9DDE620D017E600194121 /* SEPost.swift in Sources */,
 				0DA9DDF420D2543D00194121 /* UserDTO.swift in Sources */,
+				0D0C1A1E20DC979000294A70 /* OrderDetailDTO.swift in Sources */,
 				0DF574B820D8DDEA00D382DE /* CustomerDTO.swift in Sources */,
 				0D4AA9A420CE85B2006A0A2C /* BaseService.swift in Sources */,
 				0D4AA9A020CE85B2006A0A2C /* SEProduct.swift in Sources */,

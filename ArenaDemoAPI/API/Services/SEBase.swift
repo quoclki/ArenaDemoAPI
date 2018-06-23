@@ -49,8 +49,7 @@ open class SEBase {
             consumerKey:        oauth_consumer_key ,
             consumerSecret:     oauth_consumer_secret
         )
-        
-        let parameters = genParameters(request)
+        var parameters = genParameters(request)
         return (oauthswift, parameters)
     }
 }

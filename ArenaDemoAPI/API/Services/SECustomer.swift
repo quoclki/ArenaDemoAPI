@@ -50,26 +50,56 @@ open class SECustomer: SEBase {
         let info = getInfoRequest(request)
         animation?(true)
         var apiLink = "wc/v2/customers"
-        
+
         // for update
         if let id = request.id {
             apiLink += "/\( id )"
-            request.id = nil
         }
         
         return info.oauthswift.client.post(APIURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
-            guard let arrJsonObject = try? response.jsonObject() as? Array<Any>, arrJsonObject != nil else {
+            guard let jsonObject = try? response.jsonObject() else {
                 completed(responseData)
                 return
             }
             
-            arrJsonObject?.forEach({ (jsonObject) in
-                if let obj = CustomerDTO.fromObject(jsonObject) {
-                    responseData.lstCustomer.append(obj)
-                }
-            })
+            if let obj = CustomerDTO.fromObject(jsonObject) {
+                responseData.lstCustomer.append(obj)
+            }
+            
+            responseData.success = true
+            completed(responseData)
+
+        }, failure: { error in
+            responseData.updateError(error: error)
+            animation?(false)
+            completed(responseData)
+            print("Call service \(#function)() failed!. \(error)")
+        })
+
+
+    }
+
+    open class func delete(_ request: DeleteCustomerRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetCustomerResponse) -> Void)) -> OAuthSwiftRequestHandle? {
+        let responseData = GetCustomerResponse()
+        
+        let info = getInfoRequest(request)
+        animation?(true)
+        let apiLink = "wc/v2/customers/\( request.id ?? 0 )"
+        
+        return info.oauthswift.client.delete(APIURL + apiLink, parameters: info.parameters, success: { response in
+            animation?(false)
+            
+            guard let jsonObject = try? response.jsonObject() else {
+                completed(responseData)
+                return
+            }
+            
+            if let obj = CustomerDTO.fromObject(jsonObject) {
+                responseData.lstCustomer.append(obj)
+            }
+            
             responseData.success = true
             completed(responseData)
             
@@ -79,7 +109,8 @@ open class SECustomer: SEBase {
             completed(responseData)
             print("Call service \(#function)() failed!. \(error)")
         })
-
+        
     }
+
     
 }
