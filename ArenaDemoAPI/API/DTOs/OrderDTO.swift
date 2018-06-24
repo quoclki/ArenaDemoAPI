@@ -1,5 +1,5 @@
 //
-//  OrderDetailDTO.swift
+//  OrderDTO.swift
 //  ArenaDemoAPI
 //
 //  Created by Lu Kien Quoc on 6/22/18.
@@ -9,10 +9,60 @@
 import Foundation
 import ServiceStack
 
-open class OrderDetailDTO: JsonSerializable {
+// MARK: - Get List User
+// Request
+open class GetOrderRequest: BaseRequest {
     public required init() {}
     
-    open var id: String?
+    open var after: String?
+    open var before: String?
+    open var offset: Int?
+    open var parent: [String] = []
+    open var parent_exclude: [String] = []
+    open var status: String?
+    open var customer: Int?
+    open var product: Int?
+    open var dp: Int?
+    
+    open override class var typeName: String { return String(describing: self) }
+    open override class var metadata: Metadata {
+        return Metadata.create(super.metadata.properties, selfProperties:
+            [
+                Type<GetOrderRequest>.optionalProperty("after", get: {return $0.after}, set: {$0.after = $1}),
+                Type<GetOrderRequest>.optionalProperty("before", get: {return $0.before}, set: {$0.before = $1}),
+                Type<GetOrderRequest>.optionalProperty("offset", get: {return $0.offset}, set: {$0.offset = $1}),
+                Type<GetOrderRequest>.arrayProperty("parent", get: {return $0.parent}, set: {$0.parent = $1}),
+                Type<GetOrderRequest>.arrayProperty("parent_exclude", get: {return $0.parent_exclude}, set: {$0.parent_exclude = $1}),
+                Type<GetOrderRequest>.optionalProperty("status", get: {return $0.status}, set: {$0.status = $1}),
+                Type<GetOrderRequest>.optionalProperty("customer", get: {return $0.customer}, set: {$0.customer = $1}),
+                Type<GetOrderRequest>.optionalProperty("product", get: {return $0.product}, set: {$0.product = $1}),
+                Type<GetOrderRequest>.optionalProperty("dp", get: {return $0.dp}, set: {$0.dp = $1}),
+                ]
+        )
+        
+    }
+}
+
+// Response
+open class GetOrderResponse: BaseResponse {
+    public required init() {}
+    
+    open var lstOrder: [OrderDTO] = []
+    
+    open override class var typeName: String { return String(describing: self) }
+    open override class var metadata: Metadata {
+        return Metadata.create(super.metadata.properties, selfProperties:
+            [
+                Type<GetOrderResponse>.arrayProperty("lstOrder", get: {return $0.lstOrder}, set: {$0.lstOrder = $1}),
+            ]
+        )
+    }
+}
+
+open class OrderDTO: JsonSerializable {
+    public required init() {}
+    
+    open var id: Int?
     open var parent_id: Int?
     open var number: String?
     open var order_key: String?
@@ -59,48 +109,48 @@ open class OrderDetailDTO: JsonSerializable {
     open class var metadata: Metadata {
         return Metadata.create(
             [
-                Type<OrderDetailDTO>.optionalProperty("id", get: {return $0.id}, set: {$0.id = $1}),
-                Type<OrderDetailDTO>.optionalProperty("parent_id", get: {return $0.parent_id}, set: {$0.parent_id = $1}),
-                Type<OrderDetailDTO>.optionalProperty("number", get: {return $0.number}, set: {$0.number = $1}),
-                Type<OrderDetailDTO>.optionalProperty("order_key", get: {return $0.order_key}, set: {$0.order_key = $1}),
-                Type<OrderDetailDTO>.optionalProperty("created_via", get: {return $0.created_via}, set: {$0.created_via = $1}),
-                Type<OrderDetailDTO>.optionalProperty("version", get: {return $0.version}, set: {$0.version = $1}),
-                Type<OrderDetailDTO>.optionalProperty("status", get: {return $0.status}, set: {$0.status = $1}),
-                Type<OrderDetailDTO>.optionalProperty("currency", get: {return $0.currency}, set: {$0.currency = $1}),
-                Type<OrderDetailDTO>.optionalProperty("date_created", get: {return $0.date_created}, set: {$0.date_created = $1}),
-                Type<OrderDetailDTO>.optionalProperty("date_created_gmt", get: {return $0.date_created_gmt}, set: {$0.date_created_gmt = $1}),
-                Type<OrderDetailDTO>.optionalProperty("date_modified", get: {return $0.date_modified}, set: {$0.date_modified = $1}),
-                Type<OrderDetailDTO>.optionalProperty("date_modified_gmt", get: {return $0.date_modified_gmt}, set: {$0.date_modified_gmt = $1}),
-                Type<OrderDetailDTO>.optionalProperty("discount_total", get: {return $0.discount_total}, set: {$0.discount_total = $1}),
-                Type<OrderDetailDTO>.optionalProperty("discount_tax", get: {return $0.discount_tax}, set: {$0.discount_tax = $1}),
-                Type<OrderDetailDTO>.optionalProperty("shipping_total", get: {return $0.shipping_total}, set: {$0.shipping_total = $1}),
-                Type<OrderDetailDTO>.optionalProperty("shipping_tax", get: {return $0.shipping_tax}, set: {$0.shipping_tax = $1}),
-                Type<OrderDetailDTO>.optionalProperty("cart_tax", get: {return $0.cart_tax}, set: {$0.cart_tax = $1}),
-                Type<OrderDetailDTO>.optionalProperty("total", get: {return $0.total}, set: {$0.total = $1}),
-                Type<OrderDetailDTO>.optionalProperty("total_tax", get: {return $0.total_tax}, set: {$0.total_tax = $1}),
-                Type<OrderDetailDTO>.optionalProperty("prices_include_tax", get: {return $0.prices_include_tax}, set: {$0.prices_include_tax = $1}),
-                Type<OrderDetailDTO>.optionalProperty("customer_id", get: {return $0.customer_id}, set: {$0.customer_id = $1}),
-                Type<OrderDetailDTO>.optionalProperty("customer_ip_address", get: {return $0.customer_ip_address}, set: {$0.customer_ip_address = $1}),
-                Type<OrderDetailDTO>.optionalProperty("customer_user_agent", get: {return $0.customer_user_agent}, set: {$0.customer_user_agent = $1}),
-                Type<OrderDetailDTO>.optionalProperty("customer_note", get: {return $0.customer_note}, set: {$0.customer_note = $1}),
-                Type<OrderDetailDTO>.optionalProperty("billing", get: {return $0.billing}, set: {$0.billing = $1}),
-                Type<OrderDetailDTO>.optionalProperty("shipping", get: {return $0.shipping}, set: {$0.shipping = $1}),
-                Type<OrderDetailDTO>.optionalProperty("payment_method", get: {return $0.payment_method}, set: {$0.payment_method = $1}),
-                Type<OrderDetailDTO>.optionalProperty("payment_method_title", get: {return $0.payment_method_title}, set: {$0.payment_method_title = $1}),
-                Type<OrderDetailDTO>.optionalProperty("transaction_id", get: {return $0.transaction_id}, set: {$0.transaction_id = $1}),
-                Type<OrderDetailDTO>.optionalProperty("date_paid", get: {return $0.date_paid}, set: {$0.date_paid = $1}),
-                Type<OrderDetailDTO>.optionalProperty("date_paid_gmt", get: {return $0.date_paid_gmt}, set: {$0.date_paid_gmt = $1}),
-                Type<OrderDetailDTO>.optionalProperty("date_completed", get: {return $0.date_completed}, set: {$0.date_completed = $1}),
-                Type<OrderDetailDTO>.optionalProperty("date_completed_gmt", get: {return $0.date_completed_gmt}, set: {$0.date_completed_gmt = $1}),
-                Type<OrderDetailDTO>.optionalProperty("cart_hash", get: {return $0.cart_hash}, set: {$0.cart_hash = $1}),
-                Type<OrderDetailDTO>.arrayProperty("meta_data", get: {return $0.meta_data}, set: {$0.meta_data = $1}),
-                Type<OrderDetailDTO>.arrayProperty("line_items", get: {return $0.line_items}, set: {$0.line_items = $1}),
-                Type<OrderDetailDTO>.arrayProperty("tax_lines", get: {return $0.tax_lines}, set: {$0.tax_lines = $1}),
-                Type<OrderDetailDTO>.arrayProperty("shipping_lines", get: {return $0.shipping_lines}, set: {$0.shipping_lines = $1}),
-                Type<OrderDetailDTO>.arrayProperty("fee_lines", get: {return $0.fee_lines}, set: {$0.fee_lines = $1}),
-                Type<OrderDetailDTO>.arrayProperty("coupon_lines", get: {return $0.coupon_lines}, set: {$0.coupon_lines = $1}),
-                Type<OrderDetailDTO>.arrayProperty("refunds", get: {return $0.refunds}, set: {$0.refunds = $1}),
-                Type<OrderDetailDTO>.optionalProperty("set_paid", get: {return $0.set_paid}, set: {$0.set_paid = $1}),
+                Type<OrderDTO>.optionalProperty("id", get: {return $0.id}, set: {$0.id = $1}),
+                Type<OrderDTO>.optionalProperty("parent_id", get: {return $0.parent_id}, set: {$0.parent_id = $1}),
+                Type<OrderDTO>.optionalProperty("number", get: {return $0.number}, set: {$0.number = $1}),
+                Type<OrderDTO>.optionalProperty("order_key", get: {return $0.order_key}, set: {$0.order_key = $1}),
+                Type<OrderDTO>.optionalProperty("created_via", get: {return $0.created_via}, set: {$0.created_via = $1}),
+                Type<OrderDTO>.optionalProperty("version", get: {return $0.version}, set: {$0.version = $1}),
+                Type<OrderDTO>.optionalProperty("status", get: {return $0.status}, set: {$0.status = $1}),
+                Type<OrderDTO>.optionalProperty("currency", get: {return $0.currency}, set: {$0.currency = $1}),
+                Type<OrderDTO>.optionalProperty("date_created", get: {return $0.date_created}, set: {$0.date_created = $1}),
+                Type<OrderDTO>.optionalProperty("date_created_gmt", get: {return $0.date_created_gmt}, set: {$0.date_created_gmt = $1}),
+                Type<OrderDTO>.optionalProperty("date_modified", get: {return $0.date_modified}, set: {$0.date_modified = $1}),
+                Type<OrderDTO>.optionalProperty("date_modified_gmt", get: {return $0.date_modified_gmt}, set: {$0.date_modified_gmt = $1}),
+                Type<OrderDTO>.optionalProperty("discount_total", get: {return $0.discount_total}, set: {$0.discount_total = $1}),
+                Type<OrderDTO>.optionalProperty("discount_tax", get: {return $0.discount_tax}, set: {$0.discount_tax = $1}),
+                Type<OrderDTO>.optionalProperty("shipping_total", get: {return $0.shipping_total}, set: {$0.shipping_total = $1}),
+                Type<OrderDTO>.optionalProperty("shipping_tax", get: {return $0.shipping_tax}, set: {$0.shipping_tax = $1}),
+                Type<OrderDTO>.optionalProperty("cart_tax", get: {return $0.cart_tax}, set: {$0.cart_tax = $1}),
+                Type<OrderDTO>.optionalProperty("total", get: {return $0.total}, set: {$0.total = $1}),
+                Type<OrderDTO>.optionalProperty("total_tax", get: {return $0.total_tax}, set: {$0.total_tax = $1}),
+                Type<OrderDTO>.optionalProperty("prices_include_tax", get: {return $0.prices_include_tax}, set: {$0.prices_include_tax = $1}),
+                Type<OrderDTO>.optionalProperty("customer_id", get: {return $0.customer_id}, set: {$0.customer_id = $1}),
+                Type<OrderDTO>.optionalProperty("customer_ip_address", get: {return $0.customer_ip_address}, set: {$0.customer_ip_address = $1}),
+                Type<OrderDTO>.optionalProperty("customer_user_agent", get: {return $0.customer_user_agent}, set: {$0.customer_user_agent = $1}),
+                Type<OrderDTO>.optionalProperty("customer_note", get: {return $0.customer_note}, set: {$0.customer_note = $1}),
+                Type<OrderDTO>.optionalProperty("billing", get: {return $0.billing}, set: {$0.billing = $1}),
+                Type<OrderDTO>.optionalProperty("shipping", get: {return $0.shipping}, set: {$0.shipping = $1}),
+                Type<OrderDTO>.optionalProperty("payment_method", get: {return $0.payment_method}, set: {$0.payment_method = $1}),
+                Type<OrderDTO>.optionalProperty("payment_method_title", get: {return $0.payment_method_title}, set: {$0.payment_method_title = $1}),
+                Type<OrderDTO>.optionalProperty("transaction_id", get: {return $0.transaction_id}, set: {$0.transaction_id = $1}),
+                Type<OrderDTO>.optionalProperty("date_paid", get: {return $0.date_paid}, set: {$0.date_paid = $1}),
+                Type<OrderDTO>.optionalProperty("date_paid_gmt", get: {return $0.date_paid_gmt}, set: {$0.date_paid_gmt = $1}),
+                Type<OrderDTO>.optionalProperty("date_completed", get: {return $0.date_completed}, set: {$0.date_completed = $1}),
+                Type<OrderDTO>.optionalProperty("date_completed_gmt", get: {return $0.date_completed_gmt}, set: {$0.date_completed_gmt = $1}),
+                Type<OrderDTO>.optionalProperty("cart_hash", get: {return $0.cart_hash}, set: {$0.cart_hash = $1}),
+                Type<OrderDTO>.arrayProperty("meta_data", get: {return $0.meta_data}, set: {$0.meta_data = $1}),
+                Type<OrderDTO>.arrayProperty("line_items", get: {return $0.line_items}, set: {$0.line_items = $1}),
+                Type<OrderDTO>.arrayProperty("tax_lines", get: {return $0.tax_lines}, set: {$0.tax_lines = $1}),
+                Type<OrderDTO>.arrayProperty("shipping_lines", get: {return $0.shipping_lines}, set: {$0.shipping_lines = $1}),
+                Type<OrderDTO>.arrayProperty("fee_lines", get: {return $0.fee_lines}, set: {$0.fee_lines = $1}),
+                Type<OrderDTO>.arrayProperty("coupon_lines", get: {return $0.coupon_lines}, set: {$0.coupon_lines = $1}),
+                Type<OrderDTO>.arrayProperty("refunds", get: {return $0.refunds}, set: {$0.refunds = $1}),
+                Type<OrderDTO>.optionalProperty("set_paid", get: {return $0.set_paid}, set: {$0.set_paid = $1}),
             ]
         )
     }

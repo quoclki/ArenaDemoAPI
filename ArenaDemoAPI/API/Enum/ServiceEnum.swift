@@ -105,7 +105,7 @@ public enum ECustomerRole: String {
             return "Customer"
             
         case .shop_manager:
-            return "SHop Manager"
+            return "Shop Manager"
             
         default:
             return ""
@@ -113,7 +113,23 @@ public enum ECustomerRole: String {
     }
 }
 
+public enum EOrderOrderBy: String {
+    case date = "date"
+    case id = "id"
+    case include = "include"
+    case title = "title"
+    case slug = "slug"
+}
 
-
+public enum EOrderStatus: String {
+    case any = "any"
+    case pending = "pending"
+    case processing = "processing"
+    case onhold = "on-hold"
+    case completed = "completed"
+    case cancelled = "cancelled"
+    case refunded = "refunded"
+    case failed = "failed"
+}
 
 
