@@ -49,13 +49,13 @@ open class SEOrder: SEBase {
         
         let info = getInfoRequest(request)
         animation?(true)
-        var apiLink = "wc/v2/customers"
+        var apiLink = "wc/v2/orders"
         
         // for update
         if let id = request.id {
             apiLink += "/\( id )"
         }
-        
+        print(request.toString())
         return info.oauthswift.client.post(APIURL + apiLink, parameters: info.parameters, headers: headers, success: { response in
             animation?(false)
             

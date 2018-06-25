@@ -159,16 +159,16 @@ open class OrderDTO: JsonSerializable {
 open class OrderLineItemDTO: JsonSerializable {
     public required init() {}
     
-    open var id: Int?
+    open var id: Int = 0
     open var name: String?
     open var product_id: Int?
-    open var variation_id: Int?
-    open var quantity: Int?
-    open var tax_class: Int?
-    open var subtotal: String?
-    open var subtotal_tax: String?
-    open var total: String?
-    open var total_tax: String?
+    open var variation_id: Int = 0
+    open var quantity: Int = 0
+    open var tax_class: String = ""
+    open var subtotal: String = ""
+    open var subtotal_tax: String = ""
+    open var total: String = ""
+    open var total_tax: String = ""
     open var taxes: [TaxesDTO] = []
     open var meta_data: [MetaDataDTO] = []
     open var sku: String?
@@ -181,16 +181,16 @@ open class OrderLineItemDTO: JsonSerializable {
     open class var metadata: Metadata {
         return Metadata.create(
             [
-                Type<OrderLineItemDTO>.optionalProperty("id", get: {return $0.id}, set: {$0.id = $1}),
+                Type<OrderLineItemDTO>.property("id", get: {return $0.id}, set: {$0.id = $1}),
                 Type<OrderLineItemDTO>.optionalProperty("name", get: {return $0.name}, set: {$0.name = $1}),
                 Type<OrderLineItemDTO>.optionalProperty("product_id", get: {return $0.product_id}, set: {$0.product_id = $1}),
-                Type<OrderLineItemDTO>.optionalProperty("variation_id", get: {return $0.variation_id}, set: {$0.variation_id = $1}),
-                Type<OrderLineItemDTO>.optionalProperty("quantity", get: {return $0.quantity}, set: {$0.quantity = $1}),
-                Type<OrderLineItemDTO>.optionalProperty("tax_class", get: {return $0.tax_class}, set: {$0.tax_class = $1}),
-                Type<OrderLineItemDTO>.optionalProperty("subtotal", get: {return $0.subtotal}, set: {$0.subtotal = $1}),
-                Type<OrderLineItemDTO>.optionalProperty("subtotal_tax", get: {return $0.subtotal_tax}, set: {$0.subtotal_tax = $1}),
-                Type<OrderLineItemDTO>.optionalProperty("total", get: {return $0.total}, set: {$0.total = $1}),
-                Type<OrderLineItemDTO>.optionalProperty("total_tax", get: {return $0.total_tax}, set: {$0.total_tax = $1}),
+                Type<OrderLineItemDTO>.property("variation_id", get: {return $0.variation_id}, set: {$0.variation_id = $1}),
+                Type<OrderLineItemDTO>.property("quantity", get: {return $0.quantity}, set: {$0.quantity = $1}),
+                Type<OrderLineItemDTO>.property("tax_class", get: {return $0.tax_class}, set: {$0.tax_class = $1}),
+                Type<OrderLineItemDTO>.property("subtotal", get: {return $0.subtotal}, set: {$0.subtotal = $1}),
+                Type<OrderLineItemDTO>.property("subtotal_tax", get: {return $0.subtotal_tax}, set: {$0.subtotal_tax = $1}),
+                Type<OrderLineItemDTO>.property("total", get: {return $0.total}, set: {$0.total = $1}),
+                Type<OrderLineItemDTO>.property("total_tax", get: {return $0.total_tax}, set: {$0.total_tax = $1}),
                 Type<OrderLineItemDTO>.arrayProperty("taxes", get: {return $0.taxes}, set: {$0.taxes = $1}),
                 Type<OrderLineItemDTO>.arrayProperty("meta_data", get: {return $0.meta_data}, set: {$0.meta_data = $1}),
                 Type<OrderLineItemDTO>.optionalProperty("sku", get: {return $0.sku}, set: {$0.sku = $1}),

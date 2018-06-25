@@ -79,7 +79,7 @@ extension BaseResponse {
         
         self.code = dict?["code"] as? String
         self.status = data["status"] as? Int
-        self.message = params.map({ $0.key + " : " + $0.value }).joined(separator: ", ")
+        self.message = (dict?["message"] as? String ?? "") + "\n" + params.map({ $0.key + " : " + $0.value }).joined(separator: ", ")
         
     }
 }
