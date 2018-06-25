@@ -49,8 +49,9 @@ open class SEBase {
             consumerKey:        oauth_consumer_key ,
             consumerSecret:     oauth_consumer_secret
         )
-        let parameters = genParameters(request)
-        return (oauthswift, parameters)
+        
+        return (oauthswift, genParameters(request))
+
     }
 }
 
@@ -63,15 +64,15 @@ extension BaseResponse {
             return
         }
         
-        guard let responseBody = e.userInfo["Response-Body"] else {
-            return
-        }
+        guard let responseJsonString = e.userInfo["Response-Body"] as? String else { return }
+        guard let dataObject = responseJsonString.data(using: .utf8) else { return }
+        guard let dict = try? JSONSerialization.jsonObject(with: dataObject, options: []) as? [String: Any] else { return }
+        guard let data = dict?["data"] as? [String: Any] else { return }
+        guard let params = data["params"] as? [String: String] else { return }
         
-        guard let responseDTO = BaseResponse.fromObject(responseBody) else {
-            return
-        }
+        self.code = dict?["code"] as? String
+        self.status = data["status"] as? Int
+        self.message = params.map({ $0.key + " : " + $0.value }).joined(separator: ", ")
         
-        self.code = responseDTO.code
-        self.message = responseDTO.message
     }
 }

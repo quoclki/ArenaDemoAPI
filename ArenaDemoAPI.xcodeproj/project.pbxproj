@@ -25,7 +25,6 @@
 		0DF574BA20D8E12300D382DE /* SECustomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF574B920D8E12300D382DE /* SECustomer.swift */; };
 		0DF574C920D901C000D382DE /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF574C620D901BF00D382DE /* PromiseKit.framework */; };
 		0DF574CA20D901C000D382DE /* ServiceStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF574C720D901C000D382DE /* ServiceStack.framework */; };
-		0DF574CD20D9033D00D382DE /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF574CC20D9033D00D382DE /* OAuthSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +47,6 @@
 		0DF574B920D8E12300D382DE /* SECustomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SECustomer.swift; sourceTree = "<group>"; };
 		0DF574C620D901BF00D382DE /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = "<group>"; };
 		0DF574C720D901C000D382DE /* ServiceStack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ServiceStack.framework; sourceTree = "<group>"; };
-		0DF574CC20D9033D00D382DE /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OAuthSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +56,6 @@
 			files = (
 				0DF574CA20D901C000D382DE /* ServiceStack.framework in Frameworks */,
 				0DF574C920D901C000D382DE /* PromiseKit.framework in Frameworks */,
-				0DF574CD20D9033D00D382DE /* OAuthSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +137,6 @@
 		0D4AA9B020CE8787006A0A2C /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				0DF574CC20D9033D00D382DE /* OAuthSwift.framework */,
 				0DF574C620D901BF00D382DE /* PromiseKit.framework */,
 				0DF574C720D901C000D382DE /* ServiceStack.framework */,
 			);

@@ -60,8 +60,8 @@ open class CustomerDTO: JsonSerializable {
     open var role : String?
     open var username : String?
     open var password : String?
-    open var billing : AddressDTO?
-    open var shipping : AddressDTO?
+    open var billing : AddressDTO = AddressDTO()
+    open var shipping : AddressDTO = AddressDTO()
     open var is_paying_customer : Bool?
     open var orders_count : Int?
     open var total_spent : Double?
@@ -84,8 +84,8 @@ open class CustomerDTO: JsonSerializable {
                 Type<CustomerDTO>.optionalProperty("role", get: {return $0.role}, set: {$0.role = $1}),
                 Type<CustomerDTO>.optionalProperty("username", get: {return $0.username}, set: {$0.username = $1}),
                 Type<CustomerDTO>.optionalProperty("password", get: {return $0.password}, set: {$0.password = $1}),
-                Type<CustomerDTO>.optionalProperty("billing", get: {return $0.billing}, set: {$0.billing = $1}),
-                Type<CustomerDTO>.optionalProperty("shipping", get: {return $0.shipping}, set: {$0.shipping = $1}),
+                Type<CustomerDTO>.objectProperty("billing", get: {return $0.billing}, set: {$0.billing = $1}),
+                Type<CustomerDTO>.objectProperty("shipping", get: {return $0.shipping}, set: {$0.shipping = $1}),
                 Type<CustomerDTO>.optionalProperty("is_paying_customer", get: {return $0.is_paying_customer}, set: {$0.is_paying_customer = $1}),
                 Type<CustomerDTO>.optionalProperty("orders_count", get: {return $0.orders_count}, set: {$0.orders_count = $1}),
                 Type<CustomerDTO>.optionalProperty("total_spent", get: {return $0.total_spent}, set: {$0.total_spent = $1}),
@@ -120,33 +120,33 @@ open class MetaDataDTO: JsonSerializable {
 open class AddressDTO: JsonSerializable {
     public required init() {}
     
-    open var first_name : String?
-    open var last_name : String?
-    open var company : String?
-    open var address_1 : String?
-    open var address_2 : String?
-    open var city : String?
-    open var state : String?
-    open var postcode : String?
-    open var country : String?
-    open var email : String?
-    open var phone : String?
+    open var first_name : String = ""
+    open var last_name : String = ""
+    open var company : String = ""
+    open var address_1 : String = ""
+    open var address_2 : String = ""
+    open var city : String = ""
+    open var state : String = ""
+    open var postcode : String = ""
+    open var country : String = ""
+    open var email : String = ""
+    open var phone : String = ""
 
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
         return Metadata.create(
             [
-                Type<AddressDTO>.optionalProperty("first_name", get: {return $0.first_name}, set: {$0.first_name = $1}),
-                Type<AddressDTO>.optionalProperty("last_name", get: {return $0.last_name}, set: {$0.last_name = $1}),
-                Type<AddressDTO>.optionalProperty("company", get: {return $0.company}, set: {$0.company = $1}),
-                Type<AddressDTO>.optionalProperty("address_1", get: {return $0.address_1}, set: {$0.address_1 = $1}),
-                Type<AddressDTO>.optionalProperty("address_2", get: {return $0.address_2}, set: {$0.address_2 = $1}),
-                Type<AddressDTO>.optionalProperty("city", get: {return $0.city}, set: {$0.city = $1}),
-                Type<AddressDTO>.optionalProperty("state", get: {return $0.state}, set: {$0.state = $1}),
-                Type<AddressDTO>.optionalProperty("postcode", get: {return $0.postcode}, set: {$0.postcode = $1}),
-                Type<AddressDTO>.optionalProperty("country", get: {return $0.country}, set: {$0.country = $1}),
-                Type<AddressDTO>.optionalProperty("email", get: {return $0.email}, set: {$0.email = $1}),
-                Type<AddressDTO>.optionalProperty("phone", get: {return $0.phone}, set: {$0.phone = $1}),
+                Type<AddressDTO>.property("first_name", get: {return $0.first_name}, set: {$0.first_name = $1}),
+                Type<AddressDTO>.property("last_name", get: {return $0.last_name}, set: {$0.last_name = $1}),
+                Type<AddressDTO>.property("company", get: {return $0.company}, set: {$0.company = $1}),
+                Type<AddressDTO>.property("address_1", get: {return $0.address_1}, set: {$0.address_1 = $1}),
+                Type<AddressDTO>.property("address_2", get: {return $0.address_2}, set: {$0.address_2 = $1}),
+                Type<AddressDTO>.property("city", get: {return $0.city}, set: {$0.city = $1}),
+                Type<AddressDTO>.property("state", get: {return $0.state}, set: {$0.state = $1}),
+                Type<AddressDTO>.property("postcode", get: {return $0.postcode}, set: {$0.postcode = $1}),
+                Type<AddressDTO>.property("country", get: {return $0.country}, set: {$0.country = $1}),
+                Type<AddressDTO>.property("email", get: {return $0.email}, set: {$0.email = $1}),
+                Type<AddressDTO>.property("phone", get: {return $0.phone}, set: {$0.phone = $1}),
             ]
         )
     }

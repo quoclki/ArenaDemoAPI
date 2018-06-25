@@ -56,7 +56,15 @@ open class SECustomer: SEBase {
             apiLink += "/\( id )"
         }
         
-        return info.oauthswift.client.post(APIURL + apiLink, parameters: info.parameters, success: { response in
+        guard let postData = try? JSONSerialization.data(withJSONObject: info.parameters, options: []) else {
+            completed(responseData)
+            return nil
+        }
+        let headers = [
+            "Content-Type": "application/json",
+            "Cache-Control": "no-cache",
+        ]
+        return info.oauthswift.client.post(APIURL + apiLink, headers: headers, body: postData, success: { response in
             animation?(false)
             
             guard let jsonObject = try? response.jsonObject() else {
@@ -77,7 +85,6 @@ open class SECustomer: SEBase {
             completed(responseData)
             print("Call service \(#function)() failed!. \(error)")
         })
-
 
     }
 

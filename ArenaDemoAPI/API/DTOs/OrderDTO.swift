@@ -174,6 +174,9 @@ open class OrderLineItemDTO: JsonSerializable {
     open var sku: String?
     open var price: String?
     
+    open var isSend: Bool = false
+    open var imageURL: String?
+    
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
         return Metadata.create(
@@ -192,6 +195,9 @@ open class OrderLineItemDTO: JsonSerializable {
                 Type<OrderLineItemDTO>.arrayProperty("meta_data", get: {return $0.meta_data}, set: {$0.meta_data = $1}),
                 Type<OrderLineItemDTO>.optionalProperty("sku", get: {return $0.sku}, set: {$0.sku = $1}),
                 Type<OrderLineItemDTO>.optionalProperty("price", get: {return $0.price}, set: {$0.price = $1}),
+
+                Type<OrderLineItemDTO>.property("isSend", get: {return $0.isSend}, set: {$0.isSend = $1}),
+                Type<OrderLineItemDTO>.optionalProperty("imageURL", get: {return $0.imageURL}, set: {$0.imageURL = $1}),
             ]
         )
     }
