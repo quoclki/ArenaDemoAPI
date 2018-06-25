@@ -43,4 +43,72 @@ open class SEOrder: SEBase {
         })
         
     }
+    
+    open class func createOrUpdate(_ request: OrderDTO, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetOrderResponse) -> Void)) -> OAuthSwiftRequestHandle? {
+        let responseData = GetOrderResponse()
+        
+        let info = getInfoRequest(request)
+        animation?(true)
+        var apiLink = "wc/v2/customers"
+        
+        // for update
+        if let id = request.id {
+            apiLink += "/\( id )"
+        }
+        
+        return info.oauthswift.client.post(APIURL + apiLink, parameters: info.parameters, headers: headers, success: { response in
+            animation?(false)
+            
+            guard let jsonObject = try? response.jsonObject() else {
+                completed(responseData)
+                return
+            }
+            
+            if let obj = OrderDTO.fromObject(jsonObject) {
+                responseData.lstOrder.append(obj)
+            }
+            
+            responseData.success = true
+            completed(responseData)
+            
+        }, failure: { error in
+            responseData.updateError(error: error)
+            animation?(false)
+            completed(responseData)
+            print("Call service \(#function)() failed!. \(error)")
+        })
+    }
+    
+    open class func delete(_ request: DeleteOrderRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetOrderResponse) -> Void)) -> OAuthSwiftRequestHandle? {
+        let responseData = GetOrderResponse()
+        
+        let info = getInfoRequest(request)
+        animation?(true)
+        let apiLink = "wc/v2/customers/\( request.id ?? 0 )"
+        
+        return info.oauthswift.client.delete(APIURL + apiLink, parameters: info.parameters, success: { response in
+            animation?(false)
+            
+            guard let jsonObject = try? response.jsonObject() else {
+                completed(responseData)
+                return
+            }
+            
+            if let obj = OrderDTO.fromObject(jsonObject) {
+                responseData.lstOrder.append(obj)
+            }
+            
+            responseData.success = true
+            completed(responseData)
+            
+        }, failure: { error in
+            responseData.updateError(error: error)
+            animation?(false)
+            completed(responseData)
+            print("Call service \(#function)() failed!. \(error)")
+        })
+        
+    }
+
+
 }

@@ -55,16 +55,8 @@ open class SECustomer: SEBase {
         if let id = request.id {
             apiLink += "/\( id )"
         }
-        
-        guard let postData = try? JSONSerialization.data(withJSONObject: info.parameters, options: []) else {
-            completed(responseData)
-            return nil
-        }
-        let headers = [
-            "Content-Type": "application/json",
-            "Cache-Control": "no-cache",
-        ]
-        return info.oauthswift.client.post(APIURL + apiLink, headers: headers, body: postData, success: { response in
+
+        return info.oauthswift.client.post(APIURL + apiLink, parameters: info.parameters, headers: headers, success: { response in
             animation?(false)
             
             guard let jsonObject = try? response.jsonObject() else {

@@ -11,7 +11,7 @@ import OAuthSwift
 
 open class SEUser: SEBase {
     /// get List Customer get all
-    open class func getListUser(_ request: GetUserRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetUserResponse) -> Void)) -> OAuthSwiftRequestHandle? {
+    open class func getList(_ request: GetUserRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetUserResponse) -> Void)) -> OAuthSwiftRequestHandle? {
         let responseData = GetUserResponse()
         
         let info = getInfoRequest(request)

@@ -14,6 +14,13 @@ open class SEBase {
     static var oauth_consumer_key = "ck_f20eabddec7d39e39cdab8a898cc3b66e058db8d"
     static var oauth_consumer_secret = "cs_0a9f62b1c01fb70978b8456b3e3ac5fc4760c83d"
 
+    static var headers: [String: String] {
+        return [
+            "Content-Type": "application/json",
+            "Cache-Control": "no-cache",
+        ]
+    }
+
     // Get parameter not null
     class func genParameters<T: JsonSerializable>(_ request: T) -> [String: Any] {
         do {
