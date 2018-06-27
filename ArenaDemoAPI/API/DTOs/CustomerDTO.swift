@@ -100,7 +100,7 @@ open class CustomerDTO: JsonSerializable {
 open class MetaDataDTO: JsonSerializable {
     public required init() {}
     
-    open var id : String?
+    open var id : Int?
     open var key : String?
     open var value : String?
     

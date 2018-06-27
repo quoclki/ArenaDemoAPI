@@ -71,15 +71,14 @@ extension BaseResponse {
             return
         }
         
-        guard let responseJsonString = e.userInfo["Response-Body"] as? String else { return }
-        guard let dataObject = responseJsonString.data(using: .utf8) else { return }
-        guard let dict = try? JSONSerialization.jsonObject(with: dataObject, options: []) as? [String: Any] else { return }
-        guard let data = dict?["data"] as? [String: Any] else { return }
-        guard let params = data["params"] as? [String: String] else { return }
+        guard let responseObject = e.userInfo["Response-Body"] else { return }
+        guard let response = BaseResponse.fromObject(responseObject) else { return }
+        self.code = response.code
+        self.message = response.message
         
-        self.code = dict?["code"] as? String
-        self.status = data["status"] as? Int
-        self.message = (dict?["message"] as? String ?? "") + "\n" + params.map({ $0.key + " : " + $0.value }).joined(separator: ", ")
+        if let dicParam = response.data?.params, !dicParam.isEmpty {
+            self.message = "\( self.message ?? "" )\n\( dicParam.map({ $0.key + " : " + $0.value }).joined(separator: ", ") )"
+        }
         
     }
 }
