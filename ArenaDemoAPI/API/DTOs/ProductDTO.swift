@@ -135,8 +135,8 @@ open class LinkDTO: JsonSerializable {
 open class GetProductRequest: BaseRequest {
     public required init() {}
     
-    open var after: String?
-    open var before: String?
+    open var after: Date?
+    open var before: Date?
     open var offset: Int?
     open var parent: [String] = []
     open var parent_exclude: [String] = []
@@ -459,7 +459,7 @@ open class Links: JsonSerializable {
     open var wp_featuredmedia: [LinkDTO] = []
     open var wp_attachment: [LinkDTO] = []
     open var wp_term: [LinkDTO] = []
-    
+
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
         return Metadata.create(

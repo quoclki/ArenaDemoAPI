@@ -36,7 +36,7 @@ open class PaymentMethodDTO: JsonSerializable {
     open var method_title : String?
     open var method_description : String?
     open var settings : Settings?
-    open var _links : LinkDTO?
+    open var _links : Links?
 
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {

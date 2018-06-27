@@ -65,7 +65,7 @@ open class UserDTO: JsonSerializable {
     open var password: String?
     open var avatar_urls : Avatar_urls?
     open var meta : [String] = []
-    open var _links : LinkDTO?
+    open var _links : Links?
     
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {

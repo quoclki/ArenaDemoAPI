@@ -67,7 +67,7 @@ open class CustomerDTO: JsonSerializable {
     open var total_spent : Double?
     open var avatar_url : String?
     open var meta_data : [MetaDataDTO] = []
-    open var _links : LinkDTO?
+    open var _links : Links?
     
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {

@@ -14,8 +14,8 @@ import ServiceStack
 open class GetOrderRequest: BaseRequest {
     public required init() {}
     
-    open var after: String?
-    open var before: String?
+    open var after: Date?
+    open var before: Date?
     open var offset: Int?
     open var parent: [String] = []
     open var parent_exclude: [String] = []
