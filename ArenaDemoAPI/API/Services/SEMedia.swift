@@ -16,9 +16,9 @@ open class SEMedia: SEBase {
         
         let info = getInfoRequest(request)
         animation?(true)
-        let apiLink = "wp/v2/media"
+        let apiLink = "/wp-json/wp/v2/media"
         
-        return info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
+        return info.oauthswift.client.get(apiURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
             guard let arrJsonObject = try? response.jsonObject() as? Array<Any>, arrJsonObject != nil else {
@@ -49,14 +49,20 @@ open class SEMedia: SEBase {
         
         let info = getInfoRequest(request)
         animation?(true)
-        var apiLink = "wp/v2/media"
+        var apiLink = "/wp-json/wp/v2/media"
         
         // for update
         if let id = request.id {
             apiLink += "/\( id )"
         }
         
-        return info.oauthswift.client.post(APIURL + apiLink, parameters: info.parameters, headers: headers, success: { response in
+        let fileName = "picture.png"
+        let header = ["Content-Disposition": "attactment; filename\"\( fileName )\""]
+        
+        let imageURL = "data:image/png;base64,\( request.base64 ?? "" )"
+        request.template = imageURL
+        
+        return info.oauthswift.client.post(apiURL + apiLink, parameters: info.parameters, headers: header, success: { response in
             animation?(false)
             
             guard let jsonObject = try? response.jsonObject() else {
@@ -85,9 +91,9 @@ open class SEMedia: SEBase {
         
         let info = getInfoRequest(request)
         animation?(true)
-        let apiLink = "wp/v2/media/\( request.id ?? 0 )"
+        let apiLink = "/wp-json/wp/v2/media/\( request.id ?? 0 )"
         
-        return info.oauthswift.client.delete(APIURL + apiLink, parameters: info.parameters, success: { response in
+        return info.oauthswift.client.delete(apiURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
             guard let jsonObject = try? response.jsonObject() else {

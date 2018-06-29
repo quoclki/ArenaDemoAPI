@@ -91,6 +91,8 @@ open class MediaDTO: JsonSerializable {
     open var post : String?
     open var source_url : String?
     open var _links : Links?
+    
+    open var base64: String?
 
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {

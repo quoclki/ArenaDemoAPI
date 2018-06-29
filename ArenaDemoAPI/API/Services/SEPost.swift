@@ -17,7 +17,7 @@ open class SEPost: SEBase {
         let info = getInfoRequest(request)
         animation?(true)
         let apiLink = "wp/v2/categories"
-        return info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
+        return info.oauthswift.client.get(apiURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
             guard let arrJsonObject = try? response.jsonObject() as? Array<Any>, arrJsonObject != nil else {
@@ -48,7 +48,7 @@ open class SEPost: SEBase {
         let info = getInfoRequest(request)
         animation?(true)
         let apiLink = "wp/v2/posts"
-        return info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
+        return info.oauthswift.client.get(apiURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
             guard let arrJsonObject = try? response.jsonObject() as? Array<Any>, arrJsonObject != nil else {

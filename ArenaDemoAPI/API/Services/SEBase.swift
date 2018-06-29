@@ -11,8 +11,11 @@ import OAuthSwift
 import ServiceStack
 
 open class SEBase {
-    static var oauth_consumer_key = "ck_f20eabddec7d39e39cdab8a898cc3b66e058db8d"
-    static var oauth_consumer_secret = "cs_0a9f62b1c01fb70978b8456b3e3ac5fc4760c83d"
+    static var apiURL: String = "http://www.arenaapp.vn/rnd"
+    static var apiURLs: String = "https://www.arenaapp.vn/rnd"
+    
+    static let oauth_consumer_key = "ck_f20eabddec7d39e39cdab8a898cc3b66e058db8d"
+    static let oauth_consumer_secret = "cs_0a9f62b1c01fb70978b8456b3e3ac5fc4760c83d"
 
     static var headers: [String: String] {
         return [
@@ -74,7 +77,7 @@ extension BaseResponse {
         guard let responseObject = e.userInfo["Response-Body"] else { return }
         guard let response = BaseResponse.fromObject(responseObject) else { return }
         self.code = response.code
-        self.message = response.message
+        self.message = response.message ?? response.error // error only for auth api
         
         if let dicParam = response.data?.params, !dicParam.isEmpty {
             self.message = "\( self.message ?? "" )\n\( dicParam.map({ $0.key + " : " + $0.value }).joined(separator: ", ") )"

@@ -132,4 +132,18 @@ public enum EOrderStatus: String {
     case failed = "failed"
 }
 
+public enum EMediaOrder: String {
+    case date = "date"
+    case relevance = "relevance"
+    case id = "id"
+    case include = "include"
+    case title = "title"
+    case slug = "slug"
+}
 
+public enum EMediaType: String {
+    case image = "image"
+    case video = "video"
+    case audio = "audio"
+    case application = "application"
+}

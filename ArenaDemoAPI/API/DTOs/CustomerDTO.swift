@@ -50,10 +50,10 @@ open class CustomerDTO: JsonSerializable {
     public required init() {}
     
     open var id : Int?
-    open var date_created : String?
-    open var date_created_gmt : String?
-    open var date_modified : String?
-    open var date_modified_gmt : String?
+    open var date_created : Date?
+    open var date_created_gmt : Date?
+    open var date_modified : Date?
+    open var date_modified_gmt : Date?
     open var email : String?
     open var first_name : String?
     open var last_name : String?

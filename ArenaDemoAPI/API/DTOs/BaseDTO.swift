@@ -16,8 +16,8 @@ open class BaseRequest: JsonSerializable {
     open var page: Int?
     open var per_page: Int?
     open var search: String?
-    open var exclude: [String] = []
-    open var include: [String] = []
+    open var exclude: [Int] = []
+    open var include: [Int] = []
     open var order: String?
     open var orderby: String?
     open var hide_empty: Bool?
@@ -51,6 +51,7 @@ open class BaseResponse: JsonSerializable, HasMetadata {
     open var success: Bool = false
     open var code: String?
     open var message: String?
+    open var error: String?
     open var data: DataDTO?
     
     open class var typeName: String { return String(describing: self) }
@@ -60,6 +61,7 @@ open class BaseResponse: JsonSerializable, HasMetadata {
                 Type<BaseResponse>.property("success", get: {return $0.success}, set: {$0.success = $1}),
                 Type<BaseResponse>.optionalProperty("code", get: {return $0.code}, set: {$0.code = $1}),
                 Type<BaseResponse>.optionalProperty("message", get: {return $0.message}, set: {$0.message = $1}),
+                Type<BaseResponse>.optionalProperty("error", get: {return $0.error}, set: {$0.error = $1}),
                 Type<BaseResponse>.optionalProperty("data", get: {return $0.data}, set: {$0.data = $1}),
             ]
         )

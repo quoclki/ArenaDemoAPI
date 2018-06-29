@@ -16,8 +16,8 @@ open class SEPayment: SEBase {
         
         let info = getInfoRequest(request)
         animation?(true)
-        let apiLink = "wc/v2/payment_gateways"
-        return info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
+        let apiLink = "/wp-json/wc/v2/payment_gateways"
+        return info.oauthswift.client.get(apiURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             guard let arrJsonObject = try? response.jsonObject() as? Array<Any>, arrJsonObject != nil else {
                 completed(responseData)

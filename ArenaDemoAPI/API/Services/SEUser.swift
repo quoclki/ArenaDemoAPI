@@ -16,7 +16,7 @@ open class SEUser: SEBase {
         
         let info = getInfoRequest(request)
         animation?(true)
-        let apiLink = request.special_link ?? (APIURL + "wp/v2/posts")
+        let apiLink = request.special_link ?? (apiURL + "/wp-json/wp/v2/posts")
         return info.oauthswift.client.get(apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             

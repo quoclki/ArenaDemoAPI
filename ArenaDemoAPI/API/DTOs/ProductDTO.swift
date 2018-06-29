@@ -208,10 +208,10 @@ open class ProductDTO: JsonSerializable {
     open var name : String?
     open var slug : String?
     open var permalink : String?
-    open var date_created : String?
-    open var date_created_gmt : String?
-    open var date_modified : String?
-    open var date_modified_gmt : String?
+    open var date_created : Date?
+    open var date_created_gmt : Date?
+    open var date_modified : Date?
+    open var date_modified_gmt : Date?
     open var type : String?
     open var status : String?
     open var featured : Bool?
@@ -389,10 +389,10 @@ open class Images: JsonSerializable {
     public required init() {}
     
     open var id : Int?
-    open var date_created : String?
-    open var date_created_gmt : String?
-    open var date_modified : String?
-    open var date_modified_gmt : String?
+    open var date_created : Date?
+    open var date_created_gmt : Date?
+    open var date_modified : Date?
+    open var date_modified_gmt : Date?
     open var src : String?
     open var name : String?
     open var alt : String?
@@ -505,8 +505,8 @@ open class ReviewDTO: JsonSerializable {
     public required init() {}
     
     open var id : Int?
-    open var date_created : String?
-    open var date_created_gmt : String?
+    open var date_created : Date?
+    open var date_created_gmt : Date?
     open var review : String?
     open var rating : Int?
     open var name : String?

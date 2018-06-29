@@ -16,9 +16,9 @@ open class SECustomer: SEBase {
         
         let info = getInfoRequest(request)
         animation?(true)
-        let apiLink = "wc/v2/customers"
+        let apiLink = "/wp-json/wc/v2/customers"
         
-        return info.oauthswift.client.get(APIURL + apiLink, parameters: info.parameters, success: { response in
+        return info.oauthswift.client.get(apiURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
             guard let arrJsonObject = try? response.jsonObject() as? Array<Any>, arrJsonObject != nil else {
@@ -49,14 +49,14 @@ open class SECustomer: SEBase {
 
         let info = getInfoRequest(request)
         animation?(true)
-        var apiLink = "wc/v2/customers"
+        var apiLink = "/wp-json/wc/v2/customers"
 
         // for update
         if let id = request.id {
             apiLink += "/\( id )"
         }
 
-        return info.oauthswift.client.post(APIURL + apiLink, parameters: info.parameters, headers: headers, success: { response in
+        return info.oauthswift.client.post(apiURL + apiLink, parameters: info.parameters, headers: headers, success: { response in
             animation?(false)
             
             guard let jsonObject = try? response.jsonObject() else {
@@ -85,9 +85,9 @@ open class SECustomer: SEBase {
         
         let info = getInfoRequest(request)
         animation?(true)
-        let apiLink = "wc/v2/customers/\( request.id ?? 0 )"
+        let apiLink = "/wp-json/wc/v2/customers/\( request.id ?? 0 )"
         
-        return info.oauthswift.client.delete(APIURL + apiLink, parameters: info.parameters, success: { response in
+        return info.oauthswift.client.delete(apiURL + apiLink, parameters: info.parameters, success: { response in
             animation?(false)
             
             guard let jsonObject = try? response.jsonObject() else {
