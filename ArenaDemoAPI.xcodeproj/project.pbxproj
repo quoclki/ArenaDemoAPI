@@ -15,16 +15,21 @@
 		0D4AA9A120CE85B2006A0A2C /* ArenaDemoAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D4AA99820CE85B2006A0A2C /* ArenaDemoAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D4AA9A220CE85B2006A0A2C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D4AA99920CE85B2006A0A2C /* Info.plist */; };
 		0D4AA9A320CE85B2006A0A2C /* BaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AA99B20CE85B2006A0A2C /* BaseDTO.swift */; };
-		0D4AA9A420CE85B2006A0A2C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AA99C20CE85B2006A0A2C /* BaseService.swift */; };
+		0D4D0CF220E0C2CB00725295 /* PaymentMethodDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D0CF120E0C2CB00725295 /* PaymentMethodDTO.swift */; };
+		0D4D0CF420E0C57100725295 /* SEPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D0CF320E0C57100725295 /* SEPayment.swift */; };
 		0DA9DDE420D017DD00194121 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9DDE320D017DD00194121 /* PostDTO.swift */; };
 		0DA9DDE620D017E600194121 /* SEPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9DDE520D017E600194121 /* SEPost.swift */; };
 		0DA9DDF420D2543D00194121 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9DDF320D2543D00194121 /* UserDTO.swift */; };
 		0DA9DDF620D2544B00194121 /* SEUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9DDF520D2544B00194121 /* SEUser.swift */; };
+		0DB2268C20E37A7700BBC8EA /* SEMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2268B20E37A7600BBC8EA /* SEMedia.swift */; };
+		0DB2268E20E37A8200BBC8EA /* MediaDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2268D20E37A8200BBC8EA /* MediaDTO.swift */; };
 		0DF574B620D8D96A00D382DE /* ServiceEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF574B520D8D96A00D382DE /* ServiceEnum.swift */; };
 		0DF574B820D8DDEA00D382DE /* CustomerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF574B720D8DDEA00D382DE /* CustomerDTO.swift */; };
 		0DF574BA20D8E12300D382DE /* SECustomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF574B920D8E12300D382DE /* SECustomer.swift */; };
 		0DF574C920D901C000D382DE /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF574C620D901BF00D382DE /* PromiseKit.framework */; };
 		0DF574CA20D901C000D382DE /* ServiceStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF574C720D901C000D382DE /* ServiceStack.framework */; };
+		0DFAC64E20E6156C00BFB09C /* SEAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFAC64D20E6156C00BFB09C /* SEAuth.swift */; };
+		0DFAC65020E6157E00BFB09C /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFAC64F20E6157E00BFB09C /* AuthDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,16 +42,21 @@
 		0D4AA99820CE85B2006A0A2C /* ArenaDemoAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArenaDemoAPI.h; sourceTree = "<group>"; };
 		0D4AA99920CE85B2006A0A2C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D4AA99B20CE85B2006A0A2C /* BaseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDTO.swift; sourceTree = "<group>"; };
-		0D4AA99C20CE85B2006A0A2C /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		0D4D0CF120E0C2CB00725295 /* PaymentMethodDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodDTO.swift; sourceTree = "<group>"; };
+		0D4D0CF320E0C57100725295 /* SEPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEPayment.swift; sourceTree = "<group>"; };
 		0DA9DDE320D017DD00194121 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
 		0DA9DDE520D017E600194121 /* SEPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEPost.swift; sourceTree = "<group>"; };
 		0DA9DDF320D2543D00194121 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		0DA9DDF520D2544B00194121 /* SEUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEUser.swift; sourceTree = "<group>"; };
+		0DB2268B20E37A7600BBC8EA /* SEMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEMedia.swift; sourceTree = "<group>"; };
+		0DB2268D20E37A8200BBC8EA /* MediaDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDTO.swift; sourceTree = "<group>"; };
 		0DF574B520D8D96A00D382DE /* ServiceEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEnum.swift; sourceTree = "<group>"; };
 		0DF574B720D8DDEA00D382DE /* CustomerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDTO.swift; sourceTree = "<group>"; };
 		0DF574B920D8E12300D382DE /* SECustomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SECustomer.swift; sourceTree = "<group>"; };
 		0DF574C620D901BF00D382DE /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = "<group>"; };
 		0DF574C720D901C000D382DE /* ServiceStack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ServiceStack.framework; sourceTree = "<group>"; };
+		0DFAC64D20E6156C00BFB09C /* SEAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEAuth.swift; sourceTree = "<group>"; };
+		0DFAC64F20E6157E00BFB09C /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +95,6 @@
 				0D4AA99220CE85B2006A0A2C /* API */,
 				0D4AA99820CE85B2006A0A2C /* ArenaDemoAPI.h */,
 				0D4AA99920CE85B2006A0A2C /* Info.plist */,
-				0D4AA99A20CE85B2006A0A2C /* Base */,
 			);
 			path = ArenaDemoAPI;
 			sourceTree = "<group>";
@@ -103,12 +112,15 @@
 		0D4AA99320CE85B2006A0A2C /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
+				0DFAC64F20E6157E00BFB09C /* AuthDTO.swift */,
 				0D4AA99B20CE85B2006A0A2C /* BaseDTO.swift */,
 				0DF574B720D8DDEA00D382DE /* CustomerDTO.swift */,
+				0DB2268D20E37A8200BBC8EA /* MediaDTO.swift */,
+				0D0C1A1D20DC979000294A70 /* OrderDTO.swift */,
+				0D4D0CF120E0C2CB00725295 /* PaymentMethodDTO.swift */,
 				0DA9DDE320D017DD00194121 /* PostDTO.swift */,
 				0D4AA99420CE85B2006A0A2C /* ProductDTO.swift */,
 				0DA9DDF320D2543D00194121 /* UserDTO.swift */,
-				0D0C1A1D20DC979000294A70 /* OrderDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -116,22 +128,17 @@
 		0D4AA99520CE85B2006A0A2C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0DFAC64D20E6156C00BFB09C /* SEAuth.swift */,
 				0D4AA99620CE85B2006A0A2C /* SEBase.swift */,
 				0DF574B920D8E12300D382DE /* SECustomer.swift */,
+				0DB2268B20E37A7600BBC8EA /* SEMedia.swift */,
+				0D0C1A1F20DC979A00294A70 /* SEOrder.swift */,
+				0D4D0CF320E0C57100725295 /* SEPayment.swift */,
 				0DA9DDE520D017E600194121 /* SEPost.swift */,
 				0D4AA99720CE85B2006A0A2C /* SEProduct.swift */,
 				0DA9DDF520D2544B00194121 /* SEUser.swift */,
-				0D0C1A1F20DC979A00294A70 /* SEOrder.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		0D4AA99A20CE85B2006A0A2C /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				0D4AA99C20CE85B2006A0A2C /* BaseService.swift */,
-			);
-			path = Base;
 			sourceTree = "<group>";
 		};
 		0D4AA9B020CE8787006A0A2C /* Framework */ = {
@@ -190,7 +197,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = "Newstead Technologies VN";
+				ORGANIZATIONNAME = "Arena Design VN";
 				TargetAttributes = {
 					0D2C57C420CA230C00F78A5B = {
 						CreatedOnToolsVersion = 9.4;
@@ -230,20 +237,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D4D0CF420E0C57100725295 /* SEPayment.swift in Sources */,
 				0D4AA99F20CE85B2006A0A2C /* SEBase.swift in Sources */,
 				0D4AA9A320CE85B2006A0A2C /* BaseDTO.swift in Sources */,
 				0D0C1A2020DC979A00294A70 /* SEOrder.swift in Sources */,
+				0DFAC65020E6157E00BFB09C /* AuthDTO.swift in Sources */,
 				0DF574B620D8D96A00D382DE /* ServiceEnum.swift in Sources */,
 				0DF574BA20D8E12300D382DE /* SECustomer.swift in Sources */,
 				0DA9DDF620D2544B00194121 /* SEUser.swift in Sources */,
+				0DFAC64E20E6156C00BFB09C /* SEAuth.swift in Sources */,
 				0DA9DDE420D017DD00194121 /* PostDTO.swift in Sources */,
 				0D4AA99E20CE85B2006A0A2C /* ProductDTO.swift in Sources */,
 				0DA9DDE620D017E600194121 /* SEPost.swift in Sources */,
 				0DA9DDF420D2543D00194121 /* UserDTO.swift in Sources */,
 				0D0C1A1E20DC979000294A70 /* OrderDTO.swift in Sources */,
 				0DF574B820D8DDEA00D382DE /* CustomerDTO.swift in Sources */,
-				0D4AA9A420CE85B2006A0A2C /* BaseService.swift in Sources */,
+				0DB2268C20E37A7700BBC8EA /* SEMedia.swift in Sources */,
 				0D4AA9A020CE85B2006A0A2C /* SEProduct.swift in Sources */,
+				0DB2268E20E37A8200BBC8EA /* MediaDTO.swift in Sources */,
+				0D4D0CF220E0C2CB00725295 /* PaymentMethodDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

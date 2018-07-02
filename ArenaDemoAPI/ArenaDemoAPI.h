@@ -3,7 +3,7 @@
 //  ArenaDemoAPI
 //
 //  Created by Lu Kien Quoc on 6/8/18.
-//  Copyright © 2018 Newstead Technologies VN. All rights reserved.
+//  Copyright © 2018 Arena Design VN. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
