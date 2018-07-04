@@ -53,7 +53,7 @@ open class CategoryDTO: JsonSerializable {
     open var parent: Int?
     open var description: String?
     open var display: String?
-    open var image: [CategoryImageDTO] = []
+    open var image: CategoryImageDTO?
     open var menu_order: Int?
     open var count: Int?
     open var _link: Links?
@@ -68,7 +68,7 @@ open class CategoryDTO: JsonSerializable {
                 Type<CategoryDTO>.optionalProperty("parent", get: {return $0.parent}, set: {$0.parent = $1}),
                 Type<CategoryDTO>.optionalProperty("description", get: {return $0.description}, set: {$0.description = $1}),
                 Type<CategoryDTO>.optionalProperty("display", get: {return $0.display}, set: {$0.display = $1}),
-                Type<CategoryDTO>.arrayProperty("image", get: {return $0.image}, set: {$0.image = $1}),
+                Type<CategoryDTO>.optionalProperty("image", get: {return $0.image}, set: {$0.image = $1}),
                 Type<CategoryDTO>.optionalProperty("menu_order", get: {return $0.menu_order}, set: {$0.menu_order = $1}),
                 Type<CategoryDTO>.optionalProperty("count", get: {return $0.count}, set: {$0.count = $1}),
                 Type<CategoryDTO>.optionalProperty("_link", get: {return $0._link}, set: {$0._link = $1}),
