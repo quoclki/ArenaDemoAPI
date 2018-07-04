@@ -64,7 +64,7 @@ open class CustomerDTO: JsonSerializable {
     open var shipping : AddressDTO?
     open var is_paying_customer : Bool?
     open var orders_count : Int?
-    open var total_spent : Double?
+    open var total_spent : String?
     open var avatar_url : String?
     open var meta_data : [MetaDataDTO] = []
     open var _links : Links?

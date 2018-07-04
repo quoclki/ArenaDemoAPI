@@ -58,6 +58,10 @@ open class CategoryDTO: JsonSerializable {
     open var count: Int?
     open var _link: Links?
     
+    // for UI Only
+    open var isTopSaller: Bool = false
+    open var lstProduct: [ProductDTO] = []
+    
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
         return Metadata.create(
@@ -253,7 +257,7 @@ open class ProductDTO: JsonSerializable {
     open var shipping_class : String?
     open var shipping_class_id : Int?
     open var reviews_allowed : Bool?
-    open var average_rating : Double?
+    open var average_rating : String?
     open var rating_count : Int?
     open var related_ids : [Int] = []
     open var upsell_ids : [String] = []
