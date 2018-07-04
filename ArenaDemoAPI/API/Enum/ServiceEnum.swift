@@ -147,3 +147,10 @@ public enum EMediaType: String {
     case audio = "audio"
     case application = "application"
 }
+
+public enum EReportPeriod: String {
+    case week = "week"
+    case month = "month"
+    case last_month = "last_month"
+    case year = "year"
+}

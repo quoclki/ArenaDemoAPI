@@ -144,7 +144,7 @@ open class GetProductRequest: BaseRequest {
     open var type: String?
     open var sku: String?
     open var featured: Bool?
-    open var category: String?
+    open var category: Int?
     open var tag: String?
     open var shipping_class: String?
     open var attribute: String?
