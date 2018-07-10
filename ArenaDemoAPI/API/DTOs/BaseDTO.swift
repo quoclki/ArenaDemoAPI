@@ -53,6 +53,7 @@ open class BaseResponse: JsonSerializable, HasMetadata {
     open var message: String?
     open var error: String?
     open var data: DataDTO?
+    open var isCancel = false
     
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {

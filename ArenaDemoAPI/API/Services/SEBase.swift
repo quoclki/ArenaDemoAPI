@@ -67,6 +67,7 @@ open class SEBase {
 
 extension BaseResponse {
     func updateError(error: Error) {
+        self.isCancel = String(describing: error) == "cancelled"
         guard let e = (error as NSError).userInfo["error"] as? NSError else { return }
         if let msg = e.userInfo[NSLocalizedDescriptionKey] as? String, !msg.isEmpty {
             self.code = e.responseStatus.errorCode
