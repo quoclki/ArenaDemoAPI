@@ -35,7 +35,7 @@ open class PaymentMethodDTO: JsonSerializable {
     open var enabled : Bool?
     open var method_title : String?
     open var method_description : String?
-    open var settings : Settings?
+    open var settings : PaymentSettings?
     open var _links : Links?
 
     open class var typeName: String { return String(describing: self) }
@@ -56,25 +56,25 @@ open class PaymentMethodDTO: JsonSerializable {
     }
 }
 
-open class Settings: JsonSerializable {
+open class PaymentSettings: JsonSerializable {
     public required init() {}
     
-    open var title: SettingsDTO?
-    open var instructions: SettingsDTO?
+    open var title: PaymentSettingsDTO?
+    open var instructions: PaymentSettingsDTO?
 
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
         return Metadata.create(
             [
-                Type<Settings>.optionalProperty("title", get: {return $0.title}, set: {$0.title = $1}),
-                Type<Settings>.optionalProperty("instructions", get: {return $0.instructions}, set: {$0.instructions = $1}),
+                Type<PaymentSettings>.optionalProperty("title", get: {return $0.title}, set: {$0.title = $1}),
+                Type<PaymentSettings>.optionalProperty("instructions", get: {return $0.instructions}, set: {$0.instructions = $1}),
             ]
         )
     }
 
 }
 
-open class SettingsDTO: JsonSerializable {
+open class PaymentSettingsDTO: JsonSerializable {
     public required init() {}
 
     open var id: String?
@@ -90,14 +90,14 @@ open class SettingsDTO: JsonSerializable {
     open class var metadata: Metadata {
         return Metadata.create(
             [
-                Type<SettingsDTO>.optionalProperty("id", get: {return $0.id}, set: {$0.id = $1}),
-                Type<SettingsDTO>.optionalProperty("label", get: {return $0.label}, set: {$0.label = $1}),
-                Type<SettingsDTO>.optionalProperty("description", get: {return $0.description}, set: {$0.description = $1}),
-                Type<SettingsDTO>.optionalProperty("type", get: {return $0.type}, set: {$0.type = $1}),
-                Type<SettingsDTO>.optionalProperty("value", get: {return $0.value}, set: {$0.value = $1}),
-                Type<SettingsDTO>.optionalProperty("default", get: {return $0._default}, set: {$0._default = $1}),
-                Type<SettingsDTO>.optionalProperty("tip", get: {return $0.tip}, set: {$0.tip = $1}),
-                Type<SettingsDTO>.optionalProperty("placeholder", get: {return $0.placeholder}, set: {$0.placeholder = $1}),
+                Type<PaymentSettingsDTO>.optionalProperty("id", get: {return $0.id}, set: {$0.id = $1}),
+                Type<PaymentSettingsDTO>.optionalProperty("label", get: {return $0.label}, set: {$0.label = $1}),
+                Type<PaymentSettingsDTO>.optionalProperty("description", get: {return $0.description}, set: {$0.description = $1}),
+                Type<PaymentSettingsDTO>.optionalProperty("type", get: {return $0.type}, set: {$0.type = $1}),
+                Type<PaymentSettingsDTO>.optionalProperty("value", get: {return $0.value}, set: {$0.value = $1}),
+                Type<PaymentSettingsDTO>.optionalProperty("default", get: {return $0._default}, set: {$0._default = $1}),
+                Type<PaymentSettingsDTO>.optionalProperty("tip", get: {return $0.tip}, set: {$0.tip = $1}),
+                Type<PaymentSettingsDTO>.optionalProperty("placeholder", get: {return $0.placeholder}, set: {$0.placeholder = $1}),
             ]
         )
     }

@@ -270,10 +270,13 @@ open class ProductDTO: JsonSerializable {
     open var attributes : [Attributes] = []
     open var default_attributes : [String] = []
     open var variations : [String] = []
-    open var grouped_products : [String] = []
+    open var grouped_products : [Int] = []
     open var menu_order : Int?
     open var meta_data : [MetaDataDTO] = []
     open var _links : Links?
+    
+    // UI Only
+    open var itemLine: OrderLineItemDTO?
     
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
