@@ -1,5 +1,5 @@
 //
-//  SystemSettingDTO.swift
+//  SystemStatusDTO.swift
 //  ArenaDemoAPI
 //
 //  Created by Lu Kien Quoc on 7/12/18.
@@ -9,30 +9,30 @@
 import Foundation
 import ServiceStack
 
-// MARK: Get System Settings
-open class GetSystemSettingResponse: BaseResponse {
+// MARK: Get System Status
+open class GetSystemStatusResponse: BaseResponse {
     public required init() {}
     
-    open var systemSettingDTO: SystemSettingDTO?
+    open var systemStatus: SystemStatusDTO?
     
     open override class var typeName: String { return String(describing: self) }
     open override class var metadata: Metadata {
         return Metadata.create(super.metadata.properties, selfProperties:
             [
-                Type<GetSystemSettingResponse>.optionalProperty("systemSettingDTO", get: {return $0.systemSettingDTO}, set: {$0.systemSettingDTO = $1}),
+                Type<GetSystemStatusResponse>.optionalProperty("systemStatus", get: {return $0.systemStatus}, set: {$0.systemStatus = $1}),
             ]
         )
     }
 }
 
-open class SystemSettingDTO: JsonSerializable {
+open class SystemStatusDTO: JsonSerializable {
     public required init() {}
     
     open var environment: EnvironmentDTO?
     open var database: DatabaseDTO?
     open var active_plugins: [ActivePluginDTO] = []
     open var theme: ThemeDTO?
-    open var settings: SettingDTO?
+    open var settings: SystemSettingDTO?
     open var security: SecurityDTO?
     open var pages: [PageDTO] = []
 
@@ -40,13 +40,13 @@ open class SystemSettingDTO: JsonSerializable {
     open class var metadata: Metadata {
         return Metadata.create(
             [
-                Type<SystemSettingDTO>.optionalProperty("environment", get: {return $0.environment}, set: {$0.environment = $1}),
-                Type<SystemSettingDTO>.optionalProperty("database", get: {return $0.database}, set: {$0.database = $1}),
-                Type<SystemSettingDTO>.arrayProperty("active_plugins", get: {return $0.active_plugins}, set: {$0.active_plugins = $1}),
-                Type<SystemSettingDTO>.optionalProperty("theme", get: {return $0.theme}, set: {$0.theme = $1}),
-                Type<SystemSettingDTO>.optionalProperty("settings", get: {return $0.settings}, set: {$0.settings = $1}),
-                Type<SystemSettingDTO>.optionalProperty("security", get: {return $0.security}, set: {$0.security = $1}),
-                Type<SystemSettingDTO>.arrayProperty("pages", get: {return $0.pages}, set: {$0.pages = $1}),
+                Type<SystemStatusDTO>.optionalProperty("environment", get: {return $0.environment}, set: {$0.environment = $1}),
+                Type<SystemStatusDTO>.optionalProperty("database", get: {return $0.database}, set: {$0.database = $1}),
+                Type<SystemStatusDTO>.arrayProperty("active_plugins", get: {return $0.active_plugins}, set: {$0.active_plugins = $1}),
+                Type<SystemStatusDTO>.optionalProperty("theme", get: {return $0.theme}, set: {$0.theme = $1}),
+                Type<SystemStatusDTO>.optionalProperty("settings", get: {return $0.settings}, set: {$0.settings = $1}),
+                Type<SystemStatusDTO>.optionalProperty("security", get: {return $0.security}, set: {$0.security = $1}),
+                Type<SystemStatusDTO>.arrayProperty("pages", get: {return $0.pages}, set: {$0.pages = $1}),
             ]
         )
     }
@@ -369,7 +369,7 @@ open class ActivePluginDTO: JsonSerializable {
     
 }
 
-open class SettingDTO: JsonSerializable {
+open class SystemSettingDTO: JsonSerializable {
     public required init() {}
     
     open var api_enabled: Bool?
@@ -388,17 +388,17 @@ open class SettingDTO: JsonSerializable {
     open class var metadata: Metadata {
         return Metadata.create(
             [
-                Type<SettingDTO>.optionalProperty("api_enabled", get: {return $0.api_enabled}, set: {$0.api_enabled = $1}),
-                Type<SettingDTO>.optionalProperty("force_ssl", get: {return $0.force_ssl}, set: {$0.force_ssl = $1}),
-                Type<SettingDTO>.optionalProperty("currency", get: {return $0.currency}, set: {$0.currency = $1}),
-                Type<SettingDTO>.optionalProperty("currency_symbol", get: {return $0.currency_symbol}, set: {$0.currency_symbol = $1}),
-                Type<SettingDTO>.optionalProperty("currency_position", get: {return $0.currency_position}, set: {$0.currency_position = $1}),
-                Type<SettingDTO>.optionalProperty("thousand_separator", get: {return $0.thousand_separator}, set: {$0.thousand_separator = $1}),
-                Type<SettingDTO>.optionalProperty("decimal_separator", get: {return $0.decimal_separator}, set: {$0.decimal_separator = $1}),
-                Type<SettingDTO>.optionalProperty("number_of_decimals", get: {return $0.number_of_decimals}, set: {$0.number_of_decimals = $1}),
-                Type<SettingDTO>.optionalProperty("geolocation_enabled", get: {return $0.geolocation_enabled}, set: {$0.geolocation_enabled = $1}),
-                Type<SettingDTO>.optionalProperty("taxonomies", get: {return $0.taxonomies}, set: {$0.taxonomies = $1}),
-                Type<SettingDTO>.optionalProperty("product_visibility_terms", get: {return $0.product_visibility_terms}, set: {$0.product_visibility_terms = $1}),
+                Type<SystemSettingDTO>.optionalProperty("api_enabled", get: {return $0.api_enabled}, set: {$0.api_enabled = $1}),
+                Type<SystemSettingDTO>.optionalProperty("force_ssl", get: {return $0.force_ssl}, set: {$0.force_ssl = $1}),
+                Type<SystemSettingDTO>.optionalProperty("currency", get: {return $0.currency}, set: {$0.currency = $1}),
+                Type<SystemSettingDTO>.optionalProperty("currency_symbol", get: {return $0.currency_symbol}, set: {$0.currency_symbol = $1}),
+                Type<SystemSettingDTO>.optionalProperty("currency_position", get: {return $0.currency_position}, set: {$0.currency_position = $1}),
+                Type<SystemSettingDTO>.optionalProperty("thousand_separator", get: {return $0.thousand_separator}, set: {$0.thousand_separator = $1}),
+                Type<SystemSettingDTO>.optionalProperty("decimal_separator", get: {return $0.decimal_separator}, set: {$0.decimal_separator = $1}),
+                Type<SystemSettingDTO>.optionalProperty("number_of_decimals", get: {return $0.number_of_decimals}, set: {$0.number_of_decimals = $1}),
+                Type<SystemSettingDTO>.optionalProperty("geolocation_enabled", get: {return $0.geolocation_enabled}, set: {$0.geolocation_enabled = $1}),
+                Type<SystemSettingDTO>.optionalProperty("taxonomies", get: {return $0.taxonomies}, set: {$0.taxonomies = $1}),
+                Type<SystemSettingDTO>.optionalProperty("product_visibility_terms", get: {return $0.product_visibility_terms}, set: {$0.product_visibility_terms = $1}),
             ]
         )
     }

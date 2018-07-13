@@ -1,5 +1,5 @@
 //
-//  SESystemSetting.swift
+//  SESystemStatus.swift
 //  ArenaDemoAPI
 //
 //  Created by Lu Kien Quoc on 7/12/18.
@@ -9,10 +9,10 @@
 import Foundation
 import OAuthSwift
 
-open class SESystemSetting: SEBase {
+open class SESystemStatus: SEBase {
     /// get List Customer get all
-    open class func get(_ animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetSystemSettingResponse) -> Void)) -> OAuthSwiftRequestHandle? {
-        let responseData = GetSystemSettingResponse()
+    open class func get(_ animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetSystemStatusResponse) -> Void)) -> OAuthSwiftRequestHandle? {
+        let responseData = GetSystemStatusResponse()
         
         let info = getInfoRequest(BaseRequest())
         animation?(true)
@@ -26,8 +26,8 @@ open class SESystemSetting: SEBase {
                 return
             }
             
-            if let dto = SystemSettingDTO.fromObject(object) {
-                responseData.systemSettingDTO = dto
+            if let dto = SystemStatusDTO.fromObject(object) {
+                responseData.systemStatus = dto
             }
             
             responseData.success = true
