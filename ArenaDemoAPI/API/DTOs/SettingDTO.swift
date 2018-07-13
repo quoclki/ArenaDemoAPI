@@ -39,6 +39,9 @@ open class GeneralDTO: JsonSerializable {
     open var options: [String: String] = [:]
     open var _links: Links?
 
+    // for Currency Only
+    open var symbol: String?
+
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
         return Metadata.create(
