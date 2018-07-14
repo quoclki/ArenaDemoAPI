@@ -1,5 +1,5 @@
 //
-//  SEPayment.swift
+//  SEPaymentMethod.swift
 //  ArenaDemoAPI
 //
 //  Created by Lu Kien Quoc on 6/25/18.
@@ -9,7 +9,7 @@
 import Foundation
 import OAuthSwift
 
-open class SEPayment: SEBase {
+open class SEPaymentMethod: SEBase {
     /// get List Customer get all
     open class func getList(_ request: BaseRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetPaymentResponse) -> Void)) -> OAuthSwiftRequestHandle? {
         let responseData = GetPaymentResponse()
