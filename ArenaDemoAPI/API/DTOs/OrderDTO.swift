@@ -105,6 +105,10 @@ open class OrderDTO: JsonSerializable {
     open var refunds: [RefundDTO] = []
     open var set_paid: Bool?
     
+    // UI Only
+    open var payment_method_cellHeight: CGFloat = 0
+    open var lstPayment: [PaymentMethodDTO] = []
+    
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
         return Metadata.create(
@@ -177,6 +181,7 @@ open class OrderLineItemDTO: JsonSerializable {
     // UI Only
     open var isSend: Bool = false
     open var productDTO: ProductDTO?
+    open var cellHeight: CGFloat = 0
     
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
@@ -198,6 +203,7 @@ open class OrderLineItemDTO: JsonSerializable {
                 Type<OrderLineItemDTO>.optionalProperty("price", get: {return $0.price}, set: {$0.price = $1}),
 
                 Type<OrderLineItemDTO>.property("isSend", get: {return $0.isSend}, set: {$0.isSend = $1}),
+                Type<OrderLineItemDTO>.optionalProperty("productDTO", get: {return $0.productDTO}, set: {$0.productDTO = $1}),
                 Type<OrderLineItemDTO>.optionalProperty("productDTO", get: {return $0.productDTO}, set: {$0.productDTO = $1}),
             ]
         )

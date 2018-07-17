@@ -37,7 +37,10 @@ open class PaymentMethodDTO: JsonSerializable {
     open var method_description : String?
     open var settings : PaymentSettings?
     open var _links : Links?
-
+    
+    // UI Only
+    open var isCheck: Bool = false
+    
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
         return Metadata.create(
