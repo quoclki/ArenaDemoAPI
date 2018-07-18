@@ -60,8 +60,8 @@ open class CustomerDTO: JsonSerializable {
     open var role : String?
     open var username : String?
     open var password : String?
-    open var billing : AddressDTO?
-    open var shipping : AddressDTO?
+    open var billing : AddressDTO = AddressDTO()
+    open var shipping : AddressDTO = AddressDTO()
     open var is_paying_customer : Bool?
     open var orders_count : Int?
     open var total_spent : String?
@@ -84,8 +84,8 @@ open class CustomerDTO: JsonSerializable {
                 Type<CustomerDTO>.optionalProperty("role", get: {return $0.role}, set: {$0.role = $1}),
                 Type<CustomerDTO>.optionalProperty("username", get: {return $0.username}, set: {$0.username = $1}),
                 Type<CustomerDTO>.optionalProperty("password", get: {return $0.password}, set: {$0.password = $1}),
-                Type<CustomerDTO>.optionalProperty("billing", get: {return $0.billing}, set: {$0.billing = $1}),
-                Type<CustomerDTO>.optionalProperty("shipping", get: {return $0.shipping}, set: {$0.shipping = $1}),
+                Type<CustomerDTO>.property("billing", get: {return $0.billing}, set: {$0.billing = $1}),
+                Type<CustomerDTO>.property("shipping", get: {return $0.shipping}, set: {$0.shipping = $1}),
                 Type<CustomerDTO>.optionalProperty("is_paying_customer", get: {return $0.is_paying_customer}, set: {$0.is_paying_customer = $1}),
                 Type<CustomerDTO>.optionalProperty("orders_count", get: {return $0.orders_count}, set: {$0.orders_count = $1}),
                 Type<CustomerDTO>.optionalProperty("total_spent", get: {return $0.total_spent}, set: {$0.total_spent = $1}),

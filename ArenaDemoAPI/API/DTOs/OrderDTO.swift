@@ -175,7 +175,7 @@ open class OrderLineItemDTO: JsonSerializable {
     open var total_tax: String = ""
     open var taxes: [TaxesDTO] = []
     open var meta_data: [MetaDataDTO] = []
-    open var sku: String?
+    open var sku: String = ""
     open var price: String?
     
     // UI Only
@@ -199,7 +199,7 @@ open class OrderLineItemDTO: JsonSerializable {
                 Type<OrderLineItemDTO>.property("total_tax", get: {return $0.total_tax}, set: {$0.total_tax = $1}),
                 Type<OrderLineItemDTO>.arrayProperty("taxes", get: {return $0.taxes}, set: {$0.taxes = $1}),
                 Type<OrderLineItemDTO>.arrayProperty("meta_data", get: {return $0.meta_data}, set: {$0.meta_data = $1}),
-                Type<OrderLineItemDTO>.optionalProperty("sku", get: {return $0.sku}, set: {$0.sku = $1}),
+                Type<OrderLineItemDTO>.property("sku", get: {return $0.sku}, set: {$0.sku = $1}),
                 Type<OrderLineItemDTO>.optionalProperty("price", get: {return $0.price}, set: {$0.price = $1}),
 
                 Type<OrderLineItemDTO>.property("isSend", get: {return $0.isSend}, set: {$0.isSend = $1}),
