@@ -76,6 +76,9 @@ open class CategoryDTO: JsonSerializable {
                 Type<CategoryDTO>.optionalProperty("menu_order", get: {return $0.menu_order}, set: {$0.menu_order = $1}),
                 Type<CategoryDTO>.optionalProperty("count", get: {return $0.count}, set: {$0.count = $1}),
                 Type<CategoryDTO>.optionalProperty("_link", get: {return $0._link}, set: {$0._link = $1}),
+
+                Type<CategoryDTO>.property("isTopSaller", get: {return $0.isTopSaller}, set: {$0.isTopSaller = $1}),
+
             ]
         )
     }
