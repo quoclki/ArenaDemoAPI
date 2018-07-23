@@ -12,6 +12,7 @@ import ServiceStack
 open class BaseRequest: JsonSerializable {
     public required init() {}
 
+    open var id: Int?
     open var context: String?
     open var page: Int?
     open var per_page: Int?

@@ -157,7 +157,6 @@ open class AddressDTO: JsonSerializable {
 // Request
 open class DeleteCustomerRequest: BaseRequest {
     public required init() {}
-    open var id: Int?
     open var force: String?
     open var reassign: Int?
     
@@ -165,7 +164,6 @@ open class DeleteCustomerRequest: BaseRequest {
     open override class var metadata: Metadata {
         return Metadata.create(super.metadata.properties, selfProperties:
             [
-                Type<DeleteCustomerRequest>.optionalProperty("id", get: {return $0.id}, set: {$0.id = $1}),
                 Type<DeleteCustomerRequest>.optionalProperty("force", get: {return $0.force}, set: {$0.force = $1}),
                 Type<DeleteCustomerRequest>.optionalProperty("reassign", get: {return $0.reassign}, set: {$0.reassign = $1}),
                 ]

@@ -46,20 +46,41 @@ open class SEProduct: SEBase {
     open class func getListProduct(_ request: GetProductRequest, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetProductResponse) -> Void)) -> OAuthSwiftRequestHandle? {
         let responseData = GetProductResponse()
 
+        let link = apiURL + "/wp-json/wc/v2/products"
+        if let id = request.id {
+            request.special_link = link + "/\( id.toString() )"
+        }
+        
+        let apiLink = request.special_link ?? link
+
         let info = getInfoRequest(request)
-        let apiLink = "/wp-json/wc/v2/products"
         animation?(true)
-        return info.oauthswift.client.get(apiURL + apiLink, parameters: info.parameters, success: { response in
+        return info.oauthswift.client.get(apiLink, parameters: info.parameters, success: { response in
             animation?(false)
-            guard let arrJsonObject = try? response.jsonObject() as? Array<Any>, arrJsonObject != nil else {
-                completed(responseData)
-                return
-            }
-            arrJsonObject?.forEach({ (jsonObject) in
-                if let obj = ProductDTO.fromObject(jsonObject) {
-                    responseData.lstProduct.append(obj)
+            
+            if request.special_link != nil {
+                guard let jsonObject = try? response.jsonObject() else {
+                    completed(responseData)
+                    return
                 }
-            })
+                if let userDTO = ProductDTO.fromObject(jsonObject) {
+                    responseData.lstProduct.append(userDTO)
+                }
+                
+            } else {
+                guard let arrJsonObject = try? response.jsonObject() as? Array<Any>, arrJsonObject != nil else {
+                    completed(responseData)
+                    return
+                }
+                
+                arrJsonObject?.forEach({ (jsonObject) in
+                    if let obj = ProductDTO.fromObject(jsonObject) {
+                        responseData.lstProduct.append(obj)
+                    }
+                })
+                
+            }
+            
             responseData.success = true
             completed(responseData)
             
@@ -69,9 +90,8 @@ open class SEProduct: SEBase {
             completed(responseData)
             print("Call service \(#function)() failed!. \(error)")
         })
-
     }
-
+    
     // Get Product Review
     open class func getReview(_ id: Int, animation: ((Bool) -> Void)? = nil, completed: @escaping ((GetReviewResponse) -> Void)) -> OAuthSwiftRequestHandle? {
         let responseData = GetReviewResponse()
@@ -94,7 +114,7 @@ open class SEProduct: SEBase {
             })
             responseData.success = true
             completed(responseData)
-            
+
         }, failure: { error in
             responseData.updateError(error: error)
             animation?(false)
