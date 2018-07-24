@@ -68,15 +68,21 @@ open class SEBase {
 extension BaseResponse {
     func updateError(error: Error) {
         self.isCancel = String(describing: error) == "cancelled"
-        guard let e = (error as NSError).userInfo["error"] as? NSError else { return }
+        guard let e = (error as NSError).userInfo["error"] as? NSError else {
+            return
+        }
         if let msg = e.userInfo[NSLocalizedDescriptionKey] as? String, !msg.isEmpty {
             self.code = e.responseStatus.errorCode
             self.message = msg
             return
         }
         
-        guard let responseObject = e.userInfo["Response-Body"] else { return }
-        guard let response = BaseResponse.fromObject(responseObject) else { return }
+        guard let responseObject = e.userInfo["Response-Body"] else {
+            return
+        }
+        guard let response = BaseResponse.fromObject(responseObject) else {
+            return
+        }
         self.code = response.code
         self.message = response.message ?? response.error // error only for auth api
         
