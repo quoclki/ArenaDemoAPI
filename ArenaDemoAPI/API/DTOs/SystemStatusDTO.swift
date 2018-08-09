@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ServiceStack
 
 // MARK: Get System Status
 open class GetSystemStatusResponse: BaseResponse {
@@ -34,7 +33,7 @@ open class SystemStatusDTO: JsonSerializable {
     open var theme: ThemeDTO?
     open var settings: SystemSettingDTO?
     open var security: SecurityDTO?
-    open var pages: [PageDTO] = []
+    open var pages: [SystemPageDTO] = []
 
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
@@ -477,7 +476,7 @@ open class SecurityDTO: JsonSerializable {
     
 }
 
-open class PageDTO: JsonSerializable {
+open class SystemPageDTO: JsonSerializable {
     public required init() {}
     
     open var page_name: String?
@@ -493,14 +492,14 @@ open class PageDTO: JsonSerializable {
     open class var metadata: Metadata {
         return Metadata.create(
             [
-                Type<PageDTO>.optionalProperty("page_name", get: {return $0.page_name}, set: {$0.page_name = $1}),
-                Type<PageDTO>.optionalProperty("page_id", get: {return $0.page_id}, set: {$0.page_id = $1}),
-                Type<PageDTO>.optionalProperty("page_set", get: {return $0.page_set}, set: {$0.page_set = $1}),
-                Type<PageDTO>.optionalProperty("page_exists", get: {return $0.page_exists}, set: {$0.page_exists = $1}),
-                Type<PageDTO>.optionalProperty("page_visible", get: {return $0.page_visible}, set: {$0.page_visible = $1}),
-                Type<PageDTO>.optionalProperty("shortcode", get: {return $0.shortcode}, set: {$0.shortcode = $1}),
-                Type<PageDTO>.optionalProperty("shortcode_required", get: {return $0.shortcode_required}, set: {$0.shortcode_required = $1}),
-                Type<PageDTO>.optionalProperty("shortcode_present", get: {return $0.shortcode_present}, set: {$0.shortcode_present = $1}),
+                Type<SystemPageDTO>.optionalProperty("page_name", get: {return $0.page_name}, set: {$0.page_name = $1}),
+                Type<SystemPageDTO>.optionalProperty("page_id", get: {return $0.page_id}, set: {$0.page_id = $1}),
+                Type<SystemPageDTO>.optionalProperty("page_set", get: {return $0.page_set}, set: {$0.page_set = $1}),
+                Type<SystemPageDTO>.optionalProperty("page_exists", get: {return $0.page_exists}, set: {$0.page_exists = $1}),
+                Type<SystemPageDTO>.optionalProperty("page_visible", get: {return $0.page_visible}, set: {$0.page_visible = $1}),
+                Type<SystemPageDTO>.optionalProperty("shortcode", get: {return $0.shortcode}, set: {$0.shortcode = $1}),
+                Type<SystemPageDTO>.optionalProperty("shortcode_required", get: {return $0.shortcode_required}, set: {$0.shortcode_required = $1}),
+                Type<SystemPageDTO>.optionalProperty("shortcode_present", get: {return $0.shortcode_present}, set: {$0.shortcode_present = $1}),
             ]
         )
     }

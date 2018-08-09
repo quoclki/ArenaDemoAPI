@@ -8,14 +8,13 @@
 
 import Foundation
 import OAuthSwift
-import ServiceStack
 
 open class SEBase {
-    static var apiURL: String = "http://www.arenaapp.vn/rnd"
-    static var apiURLs: String = "https://www.arenaapp.vn/rnd"
+    static public var apiURL: String = "http://appbanhang.com.vn/demo"
+    static public var apiURLs: String = "https://appbanhang.com.vn/demo"
     
-    static let oauth_consumer_key = "ck_f20eabddec7d39e39cdab8a898cc3b66e058db8d"
-    static let oauth_consumer_secret = "cs_0a9f62b1c01fb70978b8456b3e3ac5fc4760c83d"
+    static let oauth_consumer_key = "ck_773f915c8cddddb52a9668fb40725aba73d3cf16"
+    static let oauth_consumer_secret = "cs_b1738b6ad3dacb293a79ab2c9fdea41320e75f9e"
 
     static var headers: [String: String] {
         return [

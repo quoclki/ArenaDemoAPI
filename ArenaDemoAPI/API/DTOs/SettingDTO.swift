@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ServiceStack
 
 // MARK: Get General Setting
 open class GetGeneralSettingResponse: BaseResponse {

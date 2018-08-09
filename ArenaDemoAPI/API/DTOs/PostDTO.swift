@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ServiceStack
 
 /// MARK: - Get All Category
 // Request

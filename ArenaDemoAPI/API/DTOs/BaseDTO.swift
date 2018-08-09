@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ServiceStack
 
 open class BaseRequest: JsonSerializable {
     public required init() {}
