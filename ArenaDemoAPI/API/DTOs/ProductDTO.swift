@@ -276,6 +276,9 @@ open class ProductDTO: JsonSerializable {
     open var menu_order : Int?
     open var meta_data : [MetaDataDTO] = []
     open var _links : Links?
+    
+    // UI Only
+    open var descriptionAttributed: NSMutableAttributedString?
         
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
