@@ -279,6 +279,8 @@ open class ProductDTO: JsonSerializable {
     
     // UI Only
     open var descriptionAttributed: NSMutableAttributedString?
+    open var normalPriceAttributed: NSAttributedString?
+    open var cellHeight: CGFloat = 0
         
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
