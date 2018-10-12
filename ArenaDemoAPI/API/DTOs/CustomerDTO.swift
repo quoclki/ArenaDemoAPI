@@ -96,26 +96,6 @@ open class CustomerDTO: JsonSerializable {
     }
 }
 
-open class MetaDataDTO: JsonSerializable {
-    public required init() {}
-    
-    open var id : Int?
-    open var key : String?
-    open var value : String?
-    
-    open class var typeName: String { return String(describing: self) }
-    open class var metadata: Metadata {
-        return Metadata.create(
-            [
-                Type<MetaDataDTO>.optionalProperty("id", get: {return $0.id}, set: {$0.id = $1}),
-                Type<MetaDataDTO>.optionalProperty("key", get: {return $0.key}, set: {$0.key = $1}),
-                Type<MetaDataDTO>.optionalProperty("value", get: {return $0.value}, set: {$0.value = $1}),
-            ]
-        )
-    }
-}
-
-
 open class AddressDTO: JsonSerializable {
     public required init() {}
     
