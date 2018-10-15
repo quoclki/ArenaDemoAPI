@@ -154,3 +154,9 @@ public enum EReportPeriod: String {
     case last_month = "last_month"
     case year = "year"
 }
+
+public enum EDiscountType: String {
+    case percent = "percent"
+    case fixed_cart = "fixed_cart"
+    case fixed_product = "fixed_product"
+}

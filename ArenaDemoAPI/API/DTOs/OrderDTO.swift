@@ -107,6 +107,7 @@ open class OrderDTO: JsonSerializable {
     // UI Only
     open var payment_method_cellHeight: CGFloat = 0
     open var lstPayment: [PaymentMethodDTO] = []
+    open var coupon_cellHeight: CGFloat = 0
     
     open class var typeName: String { return String(describing: self) }
     open class var metadata: Metadata {
